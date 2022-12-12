@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
+import { DownloadFileComponent } from './component/download-file/download-file.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 registerLocaleData(en);
 
@@ -20,7 +22,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     UploadFileComponent,
-    OnboardingComponent
+    OnboardingComponent,
+    DownloadFileComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     NzUploadModule,
+    NzButtonModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
