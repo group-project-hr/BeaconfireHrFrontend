@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  pdfs: [
+    { filename: 'PDF Test File', url: '/api/visa/i983.pdf', selected: true },
+    { filename: 'Sample PDF File', url: 'http://localhost:8080/api/pdf/sample.pdf', selected: false } ],
 };
 
 /*

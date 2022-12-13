@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
+import { ShowListComponent } from './component/show-list/show-list.component';
+import {PdfViewerModule} from "ng2-pdf-viewer";
 
 registerLocaleData(en);
 
@@ -20,7 +22,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     UploadFileComponent,
-    OnboardingComponent
+    OnboardingComponent,
+    ShowListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     NzUploadModule,
+    PdfViewerModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
