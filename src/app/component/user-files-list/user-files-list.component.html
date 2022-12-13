@@ -18,12 +18,13 @@
     <!--    [class.selected]="file === selectedFile">-->
     <th (click)="onSelect(file)">{{file.id}}</th>
 <!--    <td>{{file.employeeid}}</td>-->
+<!--    TODO change gotolink based on file name-->
     <td ><a (click)="goToLink(file.path)">{{file.path}}</a></td>
     <td (click)="onSelect(file)"><a>{{file.title}}</a></td>
     <td>{{file.comment}}</td>
     <td>{{file.createddate}}</td>
     <td>{{file.createdby}}</td>
-    <a (click)="downloadFile('/api/visa/i983.pdf')">Download</a>
+    <a (click)="downloadFile()">Download</a>
   </tr>
 
   <nz-upload [nzCustomRequest]="uploadFile" [nzShowUploadList]="{showRemoveIcon:true}">

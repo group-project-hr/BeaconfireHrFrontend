@@ -27,8 +27,9 @@ export class UserFilesListComponent implements OnInit {
           data => (
             {
               id: data.id,
-              // TODO make it available employeeid:data.employeeid,
-              path: data.path,
+              // TODO make it available
+              //  employeeid:data.employeeid,
+              path: data.docPath,
               title: data.title,
               comment: data.comment,
               created_date:data.created_date,
@@ -53,12 +54,18 @@ export class UserFilesListComponent implements OnInit {
       item.onError(err, item.file)
     })
   }
-  downloadFile = (item: any) => {
+  downloadFile = () => {
     let formData = new FormData
-    formData.append('file', item.file)
-    return (this.httpClient.get('/api/visa/file/upload'));
+    formData.append('fileType', "i983.pdf")
+    return from(this.http.post('/api/visa/file/download', formData)).subscribe(res => {
+      // item.onSuccess(item.file);
+    }, err => {
+      // item.onError(err, item.file)
+    })
   }
   goToLink(url: string){
-    window.open("http://127.0.0.1:8887/i983.pdf", "_blank");
+    var index=url.lastIndexOf('\\');
+    var filename=url.substring(index+1,);
+    window.open("http://127.0.0.1:8887/"+localStorage.getItem("userid")+'/'+filename, "_blank");
   }
 }
