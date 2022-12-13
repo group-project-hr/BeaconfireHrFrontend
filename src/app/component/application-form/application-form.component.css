@@ -1,0 +1,13 @@
+[nz-form] {
+  max-width: 850px;
+}
+
+button {
+  margin-left: 8px;
+}
+
+[nz-radio] {
+  display: block;
+  height: 32px;
+  line-height: 32px;
+}
