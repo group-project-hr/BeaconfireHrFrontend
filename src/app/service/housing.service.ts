@@ -9,6 +9,26 @@ export class HousingService {
 
   getHouseDetail() {
     // return this.http.get('https://jsonplaceholder.typicode.com/users/1');
-    return this.http.get('localhost:8080/employee/housing');
+    return this.http.get('/api/employee/housing');
+  }
+
+  postHouseReport(report: Report) {
+    const body = JSON.stringify(report);
+    const headers = {
+      'content-type': 'application/json',
+    };
+
+    this.http
+      .post<string>('/api/employee/housing/submit', body, { headers })
+      .subscribe(); // if want check response then subscribe()
+  }
+
+  getAllReport() {
+    return this.http.get('/api/employee/report');
   }
 }
+
+type Report = {
+  title: string;
+  description: string;
+};

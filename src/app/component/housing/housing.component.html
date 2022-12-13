@@ -9,6 +9,7 @@
   <h2>Address:</h2>
   <p>{{ address }}</p>
   <hr />
+
   <h2>Your roommates:</h2>
   <div *ngFor="let employee of employees; let i = index">
     <p>Roommate {{ i + 1 }}:</p>
@@ -18,4 +19,19 @@
   </div>
 </div>
 
-<div *ngIf="isReport">Tab 2 content goes here</div>
+<div *ngIf="isReport">
+  <h2>Submit a Report</h2>
+  <form [formGroup]="houseReportForm">
+    <input type="text" placeholder="Title" formControlName="title" />
+    <input
+      type="text"
+      placeholder="What's wrong?"
+      formControlName="description"
+    />
+    <button (click)="submitReport()">Submit</button>
+  </form>
+  <hr />
+
+  <h2>See all Reports</h2>
+  <button (click)="showAllReport()">Show</button>
+</div>
