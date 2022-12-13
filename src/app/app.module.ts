@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
+import { HousingComponent } from './component/housing/housing.component';
 
 registerLocaleData(en);
 
@@ -20,7 +21,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     UploadFileComponent,
-    OnboardingComponent
+    OnboardingComponent,
+    HousingComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +32,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzUploadModule,
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

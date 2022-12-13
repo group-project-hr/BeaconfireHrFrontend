@@ -1,0 +1,21 @@
+<p>housing works!</p>
+
+<div>
+  <button (click)="showHouseDetail()">Housing Detail Page</button>
+  <button (click)="showFacilityReport()">Facility Report Page</button>
+</div>
+
+<div *ngIf="isHouse">
+  <h2>Address:</h2>
+  <p>{{ address }}</p>
+  <hr />
+  <h2>Your roommates:</h2>
+  <div *ngFor="let employee of employees; let i = index">
+    <p>Roommate {{ i + 1 }}:</p>
+    <p>Name: {{ employee.name }}</p>
+    <p>Phone: {{ employee.phone }}</p>
+    <br />
+  </div>
+</div>
+
+<div *ngIf="isReport">Tab 2 content goes here</div>
