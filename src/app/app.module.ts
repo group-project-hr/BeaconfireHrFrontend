@@ -15,6 +15,10 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { ShowListComponent } from './component/show-list/show-list.component';
 import {PdfViewerModule} from "ng2-pdf-viewer";
+import {PdfViewerComponent} from "./component/pdf-viewer/pdf-viewer.component";
+import { VisaComponent } from './component/visa/visa.component';
+import { UserFilesListComponent } from './component/user-files-list/user-files-list.component';
+import {UserFilesService} from "./service/user-files.service";
 
 registerLocaleData(en);
 
@@ -23,7 +27,10 @@ registerLocaleData(en);
     AppComponent,
     UploadFileComponent,
     OnboardingComponent,
-    ShowListComponent
+    ShowListComponent,
+    PdfViewerComponent,
+    VisaComponent,
+    UserFilesListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,8 @@ registerLocaleData(en);
     PdfViewerModule,
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US },
+    UserFilesService
   ],
   bootstrap: [AppComponent]
 })

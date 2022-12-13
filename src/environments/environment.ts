@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  pdfs: [
-    { filename: 'PDF Test File', url: '/api/visa/i983.pdf', selected: true },
-    { filename: 'Sample PDF File', url: 'http://localhost:8080/api/pdf/sample.pdf', selected: false } ],
+  templatepdf: [
+    { filename: 'I983-PDF Template', url: '/api/visa/i983.pdf', selected: true } ],
 };
 
 /*

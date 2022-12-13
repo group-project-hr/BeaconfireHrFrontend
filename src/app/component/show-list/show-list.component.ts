@@ -14,17 +14,32 @@ import {registerLocaleData} from "@angular/common";
 export class ShowListComponent implements OnInit {
   requiredData= new Array<String>()
   constructor(private http: HttpService,private httpClient: HttpClient) { }
-  fileslists=FILES;
+
+  fileslist=["d","s"];
+
+  items:any;
+  address: string = '';
+  id:number=0;
+  employees: { name: string; phone: string }[] = [];
   selectedFile: File | undefined;
   ngOnInit(): void {
+    console.log("here");
+    let response = this.httpClient.get<any[]>('/api/visa/user/fileslist/1')
+      .subscribe(Response => {
+        this.items = Response.map(
+          code => (
+            {
+              id: code.id,
+              name: code.path
+            }
+          )
+        )
 
-    // @ts-ignore
-    let data = this.httpClient.get<any[]>('/api/visa/file');
-    // let data=this.httpClient.get<any[]>('https://api.github.com/users');
-    let output = data.pipe(map(users=> users.map(user => 'Mr, ' + user.workAuthorization )));
-    output.subscribe(data=> console.log(data));
+        console.log(this.items);});
 
   }
+
+
 
   onSelect(file: File): void {
     this.selectedFile = file;

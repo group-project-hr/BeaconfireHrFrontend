@@ -1,47 +1,58 @@
-<h2>My Files List</h2>
-<table class="files_table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">EmployeeId</th>
-    <th scope="col">Path</th>
-    <th scope="col">Title</th>
-    <th scope="col">Comment</th>
-    <th scope="col">Created Date</th>
-    <th scope="col">Created By User</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let file of fileslists"
-      [class.selected]="file === selectedFile">
-    <th>{{file.id}}</th>
+<!--<h2>My Files List</h2>-->
+<!--<table class="files_table">-->
+<!--  <thead class="thead-dark">-->
+<!--  <tr>-->
+<!--    <th scope="col">Id</th>-->
+<!--    <th scope="col">EmployeeId</th>-->
+<!--    <th scope="col">Path</th>-->
+<!--    <th scope="col">Title</th>-->
+<!--    <th scope="col">Comment</th>-->
+<!--    <th scope="col">Created Date</th>-->
+<!--    <th scope="col">Created By User</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let file of fileslists"-->
+<!--      [class.selected]="file === selectedFile">-->
+<!--    <th>{{file.id}}</th>-->
+<!--    <td>{{file.employeeid}}</td>-->
+<!--    <td>{{file.path}}</td>-->
+<!--    <td (click)="onSelect(file)"><a>{{file.title}}</a></td>-->
+<!--    <td>{{file.comment}}</td>-->
+<!--    <td>{{file.createddate}}</td>-->
+<!--    <td>{{file.createdby}}</td>-->
+<!--  </tr>-->
+
+  <tr *ngFor="let file of items">
+<!--      [class.selected]="file === selectedFile">-->
+    <th>{{file.id}}11111</th>
     <td>{{file.employeeid}}</td>
-    <td>{{file.path}}</td>
+    <td>{{file.name}}</td>
     <td (click)="onSelect(file)"><a>{{file.title}}</a></td>
     <td>{{file.comment}}</td>
     <td>{{file.createddate}}</td>
     <td>{{file.createdby}}</td>
   </tr>
+<!--  </tbody>-->
+<!--</table>-->
 
-  </tbody>
-</table>
 
 
-<!--<h2>{{recentTacos}} 11111</h2>-->
-<div *ngIf="selectedFile">
+<!--&lt;!&ndash;<h2>{{recentTacos}} 11111</h2>&ndash;&gt;-->
+<!--<div *ngIf="selectedFile">-->
 
-  <h2>{{selectedFile.comment | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedFile.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedFile.title" placeholder="name">
-    </label>
-  </div>
-</div>
+<!--  <h2>{{selectedFile.comment | uppercase}} Details</h2>-->
+<!--  <div><span>id: </span>{{selectedFile.id}}</div>-->
+<!--  <div>-->
+<!--    <label>name:-->
+<!--      <input [(ngModel)]="selectedFile.title" placeholder="name">-->
+<!--    </label>-->
+<!--  </div>-->
+<!--</div>-->
 
-<nz-upload [nzCustomRequest]="uploadFile" [nzShowUploadList]="{showRemoveIcon:false}">
-  <button nz-button>
-    <span nz-icon nzType="upload"></span>
-    Click to Upload
-  </button>
-</nz-upload>
+<!--<nz-upload [nzCustomRequest]="uploadFile" [nzShowUploadList]="{showRemoveIcon:false}">-->
+<!--  <button nz-button>-->
+<!--    <span nz-icon nzType="upload"></span>-->
+<!--    Click to Upload-->
+<!--  </button>-->
+<!--</nz-upload>-->

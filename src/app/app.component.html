@@ -1,54 +1,5 @@
-<!--<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>
+
 <!--<app-show-list></app-show-list>-->
-
-
-<div id="outerContainer">
-  <div class="pdf-container">
-    <pdf-viewer
-      [src]="pdfDocumentSrc"
-      [rotation]="0"
-      [original-size]="false"
-      [show-all]="true"
-      [fit-to-page]="false"
-      [zoom]="1"
-      [zoom-scale]="'page-width'"
-      [stick-to-page]="false"
-      [render-text]="true"
-      [external-link-target]="'blank'"
-      [autoresize]="true"
-      [show-borders]="false"
-      style="width: 100%; height: 600px;"
-    ></pdf-viewer>
-  </div>
-</div>
-
-<!--<div>-->
-<!--  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
-<!--    <div class="container">-->
-<!--      <a class="navbar-brand" href="/">FrontBackend</a>-->
-<!--    </div>-->
-<!--  </nav>-->
-
-<!--  <div class="container mt-3">-->
-<!--    <div class="row">-->
-<!--      <div class="col-2">-->
-<!--        <div class="list-group">-->
-<!--          <a *ngFor="let pdfFile of pdfList" [ngClass]="{'active': pdfFile.selected}" href="#" class="list-group-item list-group-item-action" (click)="showPdf(pdfFile, $event)">{{pdfFile.filename}}</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-10">-->
-<!--        <div *ngIf="isLoaded" style="text-align: center;">-->
-<!--          <button class="btn btn-primary" (click)="prevPage()" [disabled]="page === 1">Prev</button>-->
-<!--          <span class="mr-2 ml-2">{{ page }} / {{ totalPages }}</span>-->
-<!--          <button class="btn btn-primary" (click)="nextPage()" [disabled]="page === totalPages">Next</button>-->
-<!--        </div>-->
-
-<!--        <pdf-viewer [src]="pdfDocumentSrc"-->
-<!--                    [show-all]="true"-->
-<!--                    [page]="page"-->
-<!--                    (after-load-complete)="afterLoadComplete($event)"-->
-<!--        ></pdf-viewer>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<!--<app-pdf-viewer></app-pdf-viewer>-->
+<app-user-files-list></app-user-files-list>
