@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/service/http.service';
 import { from } from 'rxjs';
 
@@ -9,6 +9,9 @@ import { from } from 'rxjs';
 })
 export class UploadFileComponent implements OnInit {
 
+  @Input() uploadUrl!: string;
+  @Input() info: any;
+
   constructor(private http: HttpService) { }
 
   ngOnInit(): void {
@@ -17,7 +20,8 @@ export class UploadFileComponent implements OnInit {
   uploadFile = (item: any) => {
     let formData = new FormData
     formData.append('file', item.file)
-    return from(this.http.post('/api/employee/file/upload', formData)).subscribe(res => {
+    formData.append('info', this.info)
+    return from(this.http.post(this.uploadUrl, formData)).subscribe(res => {
       item.onSuccess(item.file);
     }, err => {
       item.onError(err, item.file)
@@ -25,5 +29,3 @@ export class UploadFileComponent implements OnInit {
   }
 
 }
-
-

@@ -14,6 +14,15 @@ import { UploadFileComponent } from './component/upload-file/upload-file.compone
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { HousingComponent } from './component/housing/housing.component';
+import { DownloadFileComponent } from './component/download-file/download-file.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { ApplicationFormComponent } from './component/application-form/application-form.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 registerLocaleData(en);
 
@@ -23,15 +32,25 @@ registerLocaleData(en);
     UploadFileComponent,
     OnboardingComponent,
     HousingComponent,
+    DownloadFileComponent,
+    ApplicationFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzUploadModule,
     ReactiveFormsModule,
+    NzButtonModule,
+    NzFormModule,
+    ReactiveFormsModule,
+    NzDatePickerModule,
+    NzRadioModule,
+    NzCheckboxModule,
+    NzDropDownModule,
+    NzSelectModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
