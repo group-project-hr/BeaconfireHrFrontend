@@ -13,8 +13,8 @@
   <h2>Your roommates:</h2>
   <div *ngFor="let employee of employees; let i = index">
     <p>Roommate {{ i + 1 }}:</p>
-    <p>Name: {{ employee.name }}</p>
-    <p>Phone: {{ employee.phone }}</p>
+    <p>Name: {{ employee.firstName }}</p>
+    <p>Phone: {{ employee.ceilPhone }}</p>
     <br />
   </div>
 </div>

@@ -24,7 +24,7 @@ export class HousingComponent implements OnInit {
   //     { name: 'Winson', phone: '321' },
   //   ];
   address: string = '';
-  employees: { name: string; phone: string }[] = [];
+  employees: { firstName: string; ceilPhone: string }[] = [];
 
   houseReportForm = new FormGroup({
     title: new FormControl(''),
@@ -62,7 +62,7 @@ export class HousingComponent implements OnInit {
 //* TYPES
 type HouseDetail = {
   address: string;
-  employees: { name: string; phone: string }[];
+  employees: { firstName: string; ceilPhone: string }[];
 };
 
 type Report = {
