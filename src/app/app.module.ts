@@ -42,7 +42,7 @@ registerLocaleData(en);
     ShowListComponent,
     PdfViewerComponent,
     VisaComponent,
-    UserFilesListComponent
+    UserFilesListComponent,
     DownloadFileComponent,
     ApplicationFormComponent
   ],
@@ -66,7 +66,8 @@ registerLocaleData(en);
     PdfViewerModule,
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US },
+    UserFilesService
   ],
   bootstrap: [AppComponent]
 })

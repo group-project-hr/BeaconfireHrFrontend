@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserFilesService} from "../../service/user-files.service";
 import {from, Subscription} from "rxjs";
 import {HttpService} from "../../service/http.service";
 import {HttpClient} from "@angular/common/http";
 import {File} from "../../file";
+import * as url from "url";
+import {NzButtonSize} from "ng-zorro-antd/button";
 
 @Component({
   selector: 'app-user-files-list',
@@ -12,35 +14,43 @@ import {File} from "../../file";
 })
 export class UserFilesListComponent implements OnInit {
   files: Array<any>;
+  visa_status: any;
   selectedFile: File | undefined;
+  size: NzButtonSize = 'large';
+  opt_step: number | undefined;
+  @Input() info!: any;
+  @Input() downloadUrl!: any;
 
-  constructor(private userFilesService: UserFilesService,private http: HttpService,private httpClient: HttpClient) {
+  constructor(private http: HttpService, private httpClient: HttpClient) {
     this.files = [];
   }
 
 
   ngOnInit(): void {
-    localStorage.setItem("userid","1");
-    let response = this.httpClient.get<any[]>('/api/visa/user/fileslist/'+localStorage.getItem("userid"))
+    localStorage.setItem("userid", "2");
+
+    let files_response = this.httpClient.get<any[]>('/api/visa/employee/fileslist/' + localStorage.getItem("userid"))
       .subscribe(Response => {
         this.files = Response.map(
-          data => (
-            {
+          data => {
+            return {
               id: data.id,
-              // TODO make it available
-              //  employeeid:data.employeeid,
+              employeeid: data.employee.id,
               path: data.docPath,
               title: data.title,
               comment: data.comment,
-              created_date:data.created_date,
-              created_by:data.created_by
+              created_date: data.created_date,
+              created_by: data.created_by
             }
-          )
+
+          }
         )
-      ;});
+
+      });
 
 
   }
+
   onSelect(file: File): void {
     this.selectedFile = file;
   }
@@ -55,17 +65,26 @@ export class UserFilesListComponent implements OnInit {
     })
   }
   downloadFile = () => {
-    let formData = new FormData
-    formData.append('fileType', "i983.pdf")
-    return from(this.http.post('/api/visa/file/download', formData)).subscribe(res => {
-      // item.onSuccess(item.file);
-    }, err => {
-      // item.onError(err, item.file)
-    })
+
+    this.http.post(this.downloadUrl, this.info, {responseType: 'blob'}).then((res: any) => {
+      let blob = new Blob([res.data], {type: `text/plain;charset=utf-8`});
+
+      let downloadElement = document.createElement("a");
+      let href = window.URL.createObjectURL(blob);
+      downloadElement.href = href;
+      // fileNHame
+      downloadElement.download = res.headers['content-disposition'];
+      document.body.appendChild(downloadElement);
+      // download file
+      downloadElement.click();
+      // remove child
+      document.body.removeChild(downloadElement);
+    }).catch()
   }
-  goToLink(url: string){
-    var index=url.lastIndexOf('\\');
-    var filename=url.substring(index+1,);
-    window.open("http://127.0.0.1:8887/"+localStorage.getItem("userid")+'/'+filename, "_blank");
+
+  goToLink(url: string) {
+    var index = url.lastIndexOf('\\');
+    var filename = url.substring(index + 1,);
+    window.open("http://127.0.0.1:8887/" + localStorage.getItem("userid") + '/' + filename, "_blank");
   }
 }

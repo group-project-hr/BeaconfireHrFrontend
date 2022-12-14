@@ -1,3 +1,47 @@
 
 <p>visa works!</p>
-<a (click)="goToLink('/api/visa/i983.pdf')">Download I-983 Template</a>
+<!--<a (click)="goToLink('/api/visa/i983.pdf')">Download I-983 Template</a>-->
+<!--<app-user-files-list></app-user-files-list>-->
+<!--<app-download-file [downloadUrl]="downloadUrl" [info]="info"></app-download-file>-->
+<div [ngSwitch]="opt_step">
+  <div *ngSwitchCase="0">
+  Plaese Upload Your Opt Recipt
+  <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_1"></app-upload-file>
+  </div>
+  <div *ngSwitchCase="1">
+    Plase submit your Opt EAD
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_2"></app-upload-file>
+  </div>
+  <div *ngSwitchCase="2">
+<!--    TODO need to based on expiration days to do-->
+    You need to download and upload your I-983
+    <a (click)="goToLink('/api/visa/i983.pdf')">Download I-983 Template</a>
+    <a (click)="goToLink('/api/visa/i983Instructions.pdf')">Download I-983 Instructions</a>
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_3"></app-upload-file>
+  </div>
+  <div *ngSwitchCase="3">
+    Waiting for HR signed your I-983 file
+  </div>
+  <div *ngSwitchCase="4">
+    Please submit Your new I-20
+
+    <app-download-file [downloadUrl]="downloadUrl" [info]="fileType_4"></app-download-file>
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_4"></app-upload-file>
+  </div>
+  <div *ngSwitchCase="5">
+    Please submit your new OPT STEM Recipt
+
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_5"></app-upload-file>
+  </div>
+  <div *ngSwitchCase="6">
+    Please submit your new OPT STEM EAD
+
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_6"></app-upload-file>
+  </div>
+  <div *ngSwitchCase="7">
+    Content to render when condition is true.
+
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="info"></app-upload-file>
+  </div>
+</div>
+<!--<app-upload-file [uploadUrl]="uploadUrl" [info]="info"></app-upload-file>-->

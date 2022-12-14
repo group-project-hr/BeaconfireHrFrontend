@@ -1,5 +1,8 @@
 
 <h2>My Files List</h2>
+<h1>{{opt_step}}</h1>
+<div *ngIf="opt_step===0">Content to render when condition is true.</div>
+
 <table class="files_table">
   <thead class="thead-dark">
   <tr>
@@ -24,12 +27,5 @@
     <td>{{file.comment}}</td>
     <td>{{file.createddate}}</td>
     <td>{{file.createdby}}</td>
-    <a (click)="downloadFile()">Download</a>
   </tr>
 
-  <nz-upload [nzCustomRequest]="uploadFile" [nzShowUploadList]="{showRemoveIcon:true}">
-    <button nz-button>
-      <span nz-icon nzType="upload"></span>
-      Click to Upload
-    </button>
-  </nz-upload>
