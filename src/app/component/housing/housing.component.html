@@ -20,6 +20,7 @@
 </div>
 
 <div *ngIf="isReport">
+  <!-- Report sumbit -->
   <h2>Submit a Report</h2>
   <form [formGroup]="houseReportForm">
     <input type="text" placeholder="Title" formControlName="title" />
@@ -32,6 +33,21 @@
   </form>
   <hr />
 
-  <h2>See all Reports</h2>
+  <!--  See all reports  -->
+  <h2>All Reports</h2>
   <button (click)="showAllReport()">Show</button>
+  <div *ngFor="let report of reports; let i = index" class="report-body">
+    <h4>Report #{{ i + 1 }}</h4>
+    <p>Title: {{ report.title }}</p>
+    <p>Description: {{ report.description }}</p>
+    <p>createdBy: {{ report.createdBy }}</p>
+    <p>reportDate: {{ report.reportDate }}</p>
+    <p>status: {{ report.status }}</p>
+    <div *ngFor="let comment of report.comments; let j = index" class="comment">
+      <h4>Comment #{{ j + 1 }}</h4>
+      <p>Description: {{ comment.description }}</p>
+      <p>createdBy: {{ comment.createdBy }}</p>
+      <p>commentDate: {{ comment.commentDate }}</p>
+    </div>
+  </div>
 </div>

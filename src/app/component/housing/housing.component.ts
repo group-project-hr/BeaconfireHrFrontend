@@ -1,11 +1,6 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HousingService } from 'src/app/service/housing.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 
 @Component({
   selector: 'app-housing',
@@ -25,6 +20,7 @@ export class HousingComponent implements OnInit {
   //   ];
   address: string = '';
   employees: { firstName: string; ceilPhone: string }[] = [];
+  reports: Report[] = [];
 
   houseReportForm = new FormGroup({
     title: new FormControl(''),
@@ -56,7 +52,16 @@ export class HousingComponent implements OnInit {
     );
   }
 
-  showAllReport() {}
+  showAllReport() {
+    let response = this.housingService.getAllReport();
+    response.subscribe((data) => {
+      // this works because there's only one key-value pair in the data
+      const reports = Object.values(data)[0];
+      this.reports = reports;
+      console.log(this.reports);
+      console.log(this.reports[0].comments);
+    });
+  }
 }
 
 //* TYPES
@@ -68,6 +73,16 @@ type HouseDetail = {
 type Report = {
   title: string;
   description: string;
+  createdBy: string;
+  reportDate: string;
+  status: string;
+  comments: [
+    {
+      description: string;
+      createdBy: string;
+      commentDate: string;
+    }
+  ];
 };
 
 // test typing, can delete

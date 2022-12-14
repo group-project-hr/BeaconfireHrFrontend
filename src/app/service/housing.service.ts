@@ -24,7 +24,7 @@ export class HousingService {
   }
 
   getAllReport() {
-    return this.http.get('/api/employee/report');
+    return this.http.get('/api/employee/housing/report');
   }
 }
 
