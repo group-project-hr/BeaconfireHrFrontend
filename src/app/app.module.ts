@@ -23,6 +23,8 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { UnauthorizedAccessComponent } from './component/errors/unauthorized-access/unauthorized-access.component';
+import { InternalServerComponent } from './component/errors/internal-server/internal-server.component';
 
 registerLocaleData(en);
 
@@ -34,6 +36,8 @@ registerLocaleData(en);
     HousingComponent,
     DownloadFileComponent,
     ApplicationFormComponent,
+    UnauthorizedAccessComponent,
+    InternalServerComponent,
   ],
   imports: [
     BrowserModule,

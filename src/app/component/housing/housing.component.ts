@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HousingService } from 'src/app/service/housing.service';
+import { ErrorHandlingService } from 'src/app/service/error-handling.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-housing',
@@ -8,7 +10,10 @@ import { HousingService } from 'src/app/service/housing.service';
   styleUrls: ['./housing.component.css'],
 })
 export class HousingComponent implements OnInit {
-  constructor(private housingService: HousingService) {}
+  constructor(
+    private housingService: HousingService,
+    private errorService: ErrorHandlingService
+  ) {}
 
   isHouse = true;
   isReport = false;
@@ -28,31 +33,33 @@ export class HousingComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    let response = this.housingService.getHouseDetail();
-    response.subscribe((data) => {
-      const detail = data as HouseDetail; // assert type
-      this.address = detail.address;
-      this.persons = detail.persons;
-    });
+    // let response = this.housingService.getHouseDetail();
+    // response.subscribe((data) => {
+    //   const detail = data as HouseDetail; // assert type
+    //   this.address = detail.address;
+    //   this.persons = detail.persons;
+    // });
   }
 
   showHouseDetail() {
     this.isHouse = true;
     this.isReport = false;
+    let response = this.housingService.getHouseDetail();
+    response.subscribe({
+      next: (data) => {
+        const detail = data as HouseDetail;
+        this.address = detail.address;
+        this.persons = detail.persons;
+      },
+      error: (err: HttpErrorResponse) => {
+        this.errorService.handleError(err);
+      },
+    });
   }
 
   showFacilityReport() {
     this.isHouse = false;
     this.isReport = true;
-  }
-
-  submitReport() {
-    this.housingService.postHouseReport(
-      this.houseReportForm.getRawValue() as Report
-    );
-  }
-
-  showAllReport() {
     let response = this.housingService.getAllReport();
     response.subscribe((data) => {
       // this works because there's only one key-value pair in the data
@@ -61,6 +68,12 @@ export class HousingComponent implements OnInit {
       console.log(this.reports);
       console.log(this.reports[0].comments);
     });
+  }
+
+  submitReport() {
+    this.housingService.postHouseReport(
+      this.houseReportForm.getRawValue() as Report
+    );
   }
 }
 

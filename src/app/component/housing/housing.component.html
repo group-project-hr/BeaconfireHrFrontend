@@ -42,7 +42,6 @@
 
   <!--  See all reports  -->
   <h2>All Reports</h2>
-  <button (click)="showAllReport()">Show</button>
   <div *ngFor="let report of reports; let i = index" class="report-body">
     <h4>Report #{{ i + 1 }}</h4>
     <p>Title: {{ report.title }}</p>

@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { ErrorHandlingService } from 'src/app/service/error-handling.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 // Declare where this service is available for use
 @Injectable({ providedIn: 'root' })
@@ -8,8 +10,7 @@ export class HousingService {
   constructor(private http: HttpClient) {}
 
   getHouseDetail() {
-    // todo: hardcoded pathvariable, change it later
-    return this.http.get('/api/employee/housing/3');
+    return this.http.get('/api/employee/housing');
   }
 
   postHouseReport(report: Report) {
@@ -22,7 +23,9 @@ export class HousingService {
 
     this.http
       .post<string>('/api/employee/housing/submit', body, { headers })
-      .subscribe(); // if want check response then subscribe()
+      .subscribe((data) => {
+        console.log(data);
+      }); // if want check response then subscribe()
   }
 
   getAllReport() {
