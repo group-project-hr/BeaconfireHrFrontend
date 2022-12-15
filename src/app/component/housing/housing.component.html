@@ -6,15 +6,22 @@
 </div>
 
 <div *ngIf="isHouse">
-  <h2>Address:</h2>
-  <p>{{ address }}</p>
+  <h2>Address</h2>
+  <p>{{ address.addressLine1 }}</p>
+  <p *ngIf="address.addressLine2 !== null">{{ address.addressLine2 }}</p>
+  <p>{{ address.city }}, {{ address.stateAbbr }} {{ address.zipcode }}</p>
   <hr />
 
-  <h2>Your roommates:</h2>
-  <div *ngFor="let employee of employees; let i = index">
+  <h2>Your Roommates</h2>
+  <div *ngFor="let person of persons; let i = index">
     <p>Roommate {{ i + 1 }}:</p>
-    <p>Name: {{ employee.firstName }}</p>
-    <p>Phone: {{ employee.ceilPhone }}</p>
+    <div *ngIf="person.preferredName === null; else useFirstName">
+      <p>Name: {{ person.preferredName }}</p>
+    </div>
+    <ng-template #useFirstName>
+      <p>Name: {{ person.firstName }}</p>
+    </ng-template>
+    <p>Phone: {{ person.ceilPhone }}</p>
     <br />
   </div>
 </div>

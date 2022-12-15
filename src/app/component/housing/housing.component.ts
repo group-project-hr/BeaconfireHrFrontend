@@ -18,8 +18,8 @@ export class HousingComponent implements OnInit {
   //     { name: 'Arkar', phone: '123' },
   //     { name: 'Winson', phone: '321' },
   //   ];
-  address: string = '';
-  employees: { firstName: string; ceilPhone: string }[] = [];
+  address: Address = {} as Address;
+  persons: Person[] = [];
   reports: Report[] = [];
 
   houseReportForm = new FormGroup({
@@ -32,7 +32,7 @@ export class HousingComponent implements OnInit {
     response.subscribe((data) => {
       const detail = data as HouseDetail; // assert type
       this.address = detail.address;
-      this.employees = detail.employees;
+      this.persons = detail.persons;
     });
   }
 
@@ -65,12 +65,39 @@ export class HousingComponent implements OnInit {
 }
 
 //* TYPES
+type Address = {
+  id: number;
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  zipcode: string;
+  stateName: string;
+  stateAbbr: string;
+};
+
+type Person = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  preferredName: string;
+  address: Address;
+  email: string;
+  ceilPhone: string;
+  workPhone: string;
+};
+
+// type HouseDetail = {
+//   address: Address;
+//   employees: { firstName: string; preferredName: string; ceilPhone: string }[];
+// };
+
 type HouseDetail = {
-  address: string;
-  employees: { firstName: string; ceilPhone: string }[];
+  address: Address;
+  persons: Person[];
 };
 
 type Report = {
+  id: number;
   title: string;
   description: string;
   createdBy: string;
