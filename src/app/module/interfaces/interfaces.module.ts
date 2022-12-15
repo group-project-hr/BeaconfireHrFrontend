@@ -11,21 +11,23 @@ import { CommonModule } from '@angular/common';
 })
 export class InterfacesModule { }
 
-export declare interface Reference {
-  firstName: String,
-  lastName: String,
-  middleName: String,
-  Phone: String,
-  Address: String,
-  Email: String,
-  Relationship: String
+export declare interface ReferenceInterface {
+  id: number,
+  rFirstName: string,
+  rLastName: string,
+  rMiddleName: string,
+  rPhone: string,
+  rAddress: string,
+  rEmail: string,
+  rRelationship: string
 }
 
-export declare interface EmergencyContact {
-  firstName: String,
-  lastName: String,
-  middleName: String,
-  Phone: String,
-  Email: String,
-  Relationship: String
+export declare interface EmergencyContactInterface {
+  id: number,
+  ecFirstName: string,
+  ecLastName: string,
+  ecMiddleName: string,
+  ecPhone: string,
+  ecEmail: string,
+  ecRelationship: string
 }
