@@ -28,6 +28,9 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { UserStatusManagementComponent } from './component/user-status-management/user-status-management.component';
+import {NzCollapseModule} from "ng-zorro-antd/collapse";
+import {NzDescriptionsModule} from "ng-zorro-antd/descriptions";
 
 
 registerLocaleData(en);
@@ -44,7 +47,8 @@ registerLocaleData(en);
     VisaComponent,
     UserFilesListComponent,
     DownloadFileComponent,
-    ApplicationFormComponent
+    ApplicationFormComponent,
+    UserStatusManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,8 @@ registerLocaleData(en);
     NzSelectModule,
     NzButtonModule,
     PdfViewerModule,
+    NzCollapseModule,
+    NzDescriptionsModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
