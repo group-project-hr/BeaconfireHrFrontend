@@ -22,6 +22,8 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { LoginComponent } from './component/login/login.component';
+import { RegistrationComponent } from './component/registration/registration.component';
 
 
 registerLocaleData(en);
@@ -32,7 +34,9 @@ registerLocaleData(en);
     UploadFileComponent,
     OnboardingComponent,
     DownloadFileComponent,
-    ApplicationFormComponent
+    ApplicationFormComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
