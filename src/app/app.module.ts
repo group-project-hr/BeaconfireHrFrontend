@@ -24,6 +24,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { LoginComponent } from './component/login/login.component';
 import { RegistrationComponent } from './component/registration/registration.component';
+import { VerifyTokenComponent } from './component/verify-token/verify-token.component';
+import { GenerateTokenComponent } from './component/generate-token/generate-token.component';
 
 
 registerLocaleData(en);
@@ -36,8 +38,10 @@ registerLocaleData(en);
     DownloadFileComponent,
     ApplicationFormComponent,
     LoginComponent,
-    RegistrationComponent
-  ],
+    RegistrationComponent,
+    VerifyTokenComponent,
+    GenerateTokenComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,

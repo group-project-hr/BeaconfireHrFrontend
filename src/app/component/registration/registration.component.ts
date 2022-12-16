@@ -51,15 +51,10 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
+      username: [null, [Validators.required]],
       password: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      nickname: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
+
     });
   }
 }

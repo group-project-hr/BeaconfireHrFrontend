@@ -1,0 +1,27 @@
+<form nz-form [formGroup]="generateTokenForm" (ngSubmit)="submitForm()">
+    <label> Sign Up With Token </label>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Email</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+            <input nz-input formControlName="email" />
+            <ng-template #emailErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('pattern')">Please input your valid Email!</ng-container>
+                <ng-container *ngIf="control.hasError('required')">Please input your Email!</ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Token</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+            <input nz-input formControlName="token" />
+            <ng-template #emailErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">Please input your Token!</ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+            <button nz-button nzType="primary" [disabled]="!generateTokenForm.valid">Submit</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>
