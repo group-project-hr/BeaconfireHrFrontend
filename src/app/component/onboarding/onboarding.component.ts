@@ -9,11 +9,11 @@ export class OnboardingComponent implements OnInit {
 
   constructor() { }
 
-  uploadUrl: string = '/api/employee/file/upload'
-  downloadUrl: string = '/api/employee/file/download'
+  uploadUrl: string = '/api/file/upload'
+  downloadUrl: string = '/api/file/download'
 
   info: object = {
-    "fileType": "test"
+    "fileType": "avatar"
   }
 
 
