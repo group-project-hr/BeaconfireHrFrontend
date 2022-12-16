@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit} from 
 import {HttpService} from "../../service/http.service";
 import {HttpClient} from "@angular/common/http";
 import {NzCollapseModule} from 'ng-zorro-antd/collapse';
-import {ControlValueAccessor} from "@angular/forms";
+import {ControlValueAccessor, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -11,22 +11,14 @@ import {ControlValueAccessor} from "@angular/forms";
   styleUrls: ['./user-status-management.component.css']
 })
 export class UserStatusManagementComponent implements OnInit {
-  descriptionCodes={
 
-    code:"dsadas",
-
-  }
-  cd:object={
-    code:"dddd",
-    descrption:"dadsa"
-  }
   currentDate = new Date();
   documents_show: "Documents SHow" | undefined;
   files: Array<any>;
   user_status_info_list: Array<any>;
   opt_step: any;
 
-  constructor(private http: HttpService, private httpClient: HttpClient,private el: ElementRef) {
+  constructor(private http: HttpService, private httpClient: HttpClient,private el: ElementRef,private fb: UntypedFormBuilder) {
     this.user_status_info_list = [];
     this.files = [];
   }
@@ -70,7 +62,22 @@ export class UserStatusManagementComponent implements OnInit {
 
   }
 
+
+  validateForm!: UntypedFormGroup;
+
+
   ngOnInit(): void {
+
+
+    this.validateForm = this.fb.group({
+      name:[null],
+      work_authorization:[null],
+      startDate: [null],
+      endDate:[null],
+      userId:[]
+    });
+
+
     let user_info_response = this.httpClient.get<any[]>('/api/visa/visastatus_info')
       .subscribe(Response => {
         this.user_status_info_list = Response.map(
@@ -108,25 +115,43 @@ export class UserStatusManagementComponent implements OnInit {
 
     location.reload();
   }
+  getWorkAuthorization(i:number): void {
 
-  @Input()
-  text: string | undefined;
 
-  editmode = false;
-  editText: string | undefined = '';
-  edit() {
+    this.original_name=this.user_status_info_list[i].name;
+    this.original_work_authorization=this.user_status_info_list[i].work_authorization;
+    this.original_start_date=this.user_status_info_list[i].startDate;
+    this.original_end_date=this.user_status_info_list[i].endDate;
+    // location.reload();
+  }
+
+
+
+  editmode = true;
+  form: any;
+  edit(i:number) {
+    //TODO change to the mouse event to finish double-click change the values
     this.editmode = true;
-    this.editText = this.text;
+    this.original_name=this.user_status_info_list[i].name;
+    this.original_work_authorization=this.user_status_info_list[i].work_authorization;
+    this.original_start_date=this.user_status_info_list[i].startDate;
+    this.original_end_date=this.user_status_info_list[i].endDate;
   }
 
-  save() {
-    this.editmode = false;
-    this.text = this.editText;
+  submitForm(i:number): void {
+    console.log(this.validateForm.value);
+    this.validateForm.controls['userId'].setValue(this.user_status_info_list[i].id);
+    console.log(this.validateForm.value);
+    let info = this.validateForm.value;
+    this.http.post('/api/visa/update/work_authoization_application_form', info);
   }
-
-  cancel() {
-    this.editmode = false;
-    this.editText = '';
+  original_name:any;
+  original_work_authorization:any;
+  original_start_date:any;
+  original_end_date:any;
+  disabled=true;
+  doubleClick(): void{
+    this.editmode=!this.editmode;
   }
 
 }

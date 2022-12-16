@@ -31,6 +31,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { UserStatusManagementComponent } from './component/user-status-management/user-status-management.component';
 import {NzCollapseModule} from "ng-zorro-antd/collapse";
 import {NzDescriptionsModule} from "ng-zorro-antd/descriptions";
+import {NzTimePickerModule} from "ng-zorro-antd/time-picker";
+import {NzTypographyModule} from "ng-zorro-antd/typography";
+import {NzInputModule} from "ng-zorro-antd/input";
 
 
 registerLocaleData(en);
@@ -70,6 +73,9 @@ registerLocaleData(en);
     PdfViewerModule,
     NzCollapseModule,
     NzDescriptionsModule,
+    NzTimePickerModule,
+    NzTypographyModule,
+    NzInputModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
