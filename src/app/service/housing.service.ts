@@ -21,15 +21,22 @@ export class HousingService {
       'content-type': 'application/json',
     };
 
-    this.http
-      .post<string>('/api/employee/housing/submit', body, { headers })
-      .subscribe((data) => {
-        console.log(data);
-      }); // if want check response then subscribe()
+    return this.http.post<string>('/api/employee/housing/submit', body, {
+      headers,
+    });
   }
 
   getAllReport() {
     return this.http.get('/api/employee/housing/report');
+  }
+
+  postReportComment(comment: Comment) {
+    const body = JSON.stringify(comment);
+    const headers = { 'content-type': 'application/json' };
+
+    return this.http.post('/api/employee/housing/addComment', body, {
+      headers,
+    });
   }
 }
 
@@ -52,4 +59,9 @@ type Report = {
       commentDate: string;
     }
   ];
+};
+
+type Comment = {
+  reportId: number;
+  description: string;
 };

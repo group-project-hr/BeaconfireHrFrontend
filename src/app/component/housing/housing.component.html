@@ -49,6 +49,10 @@
     <p>createdBy: {{ report.createdBy }}</p>
     <p>reportDate: {{ report.reportDate }}</p>
     <p>status: {{ report.status }}</p>
+    <form [formGroup]="commentForm">
+      <input type="text" placeholder="your comment" formControlName="comment" />
+      <button (click)="addComment(report.id, i)">Submit</button>
+    </form>
     <div *ngFor="let comment of report.comments; let j = index" class="comment">
       <h4>Comment #{{ j + 1 }}</h4>
       <p>Description: {{ comment.description }}</p>

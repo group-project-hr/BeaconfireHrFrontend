@@ -32,6 +32,10 @@ export class HousingComponent implements OnInit {
     description: new FormControl(''),
   });
 
+  commentForm = new FormGroup({
+    comment: new FormControl(''),
+  });
+
   ngOnInit(): void {
     // let response = this.housingService.getHouseDetail();
     // response.subscribe((data) => {
@@ -65,15 +69,37 @@ export class HousingComponent implements OnInit {
       // this works because there's only one key-value pair in the data
       const reports = Object.values(data)[0];
       this.reports = reports;
-      console.log(this.reports);
-      console.log(this.reports[0].comments);
     });
   }
 
   submitReport() {
-    this.housingService.postHouseReport(
+    let response = this.housingService.postHouseReport(
       this.houseReportForm.getRawValue() as Report
     );
+    response.subscribe((data: unknown) => {
+      this.reports.push(data as Report);
+    });
+
+    alert('Thank you for your submission');
+    this.houseReportForm.reset(); // clear input text
+  }
+
+  addComment(reportId: number, index: number) {
+    let comment: Comment = {} as Comment;
+    comment.description = this.commentForm.getRawValue().comment as string;
+    comment.reportId = reportId;
+
+    let response = this.housingService.postReportComment(comment);
+    response.subscribe((data: unknown) => {
+      this.reports[index].comments.push(
+        data as {
+          id: number;
+          commentDate: string;
+          createdBy: string;
+          description: string;
+        }
+      );
+    });
   }
 }
 
@@ -118,6 +144,7 @@ type Report = {
   status: string;
   comments: [
     {
+      id: number;
       description: string;
       createdBy: string;
       commentDate: string;
@@ -125,20 +152,7 @@ type Report = {
   ];
 };
 
-// test typing, can delete
-type User = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: { lat: string; lng: string };
-  };
-  phone: string;
-  website: string;
-  company: { name: string; catchPhrase: string; bs: string };
+type Comment = {
+  reportId: number;
+  description: string;
 };
