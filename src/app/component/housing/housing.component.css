@@ -1,0 +1,11 @@
+.report-body {
+  border-style: solid;
+}
+.comment {
+  border-style: solid;
+  font-size: 12px;
+  border-width: 1px;
+}
+h4 {
+  font-size: initial;
+}
