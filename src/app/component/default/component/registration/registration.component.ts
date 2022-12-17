@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { HttpService } from 'src/app/service/http.service';
 
 @Component({
   selector: 'app-registration',
@@ -18,7 +19,17 @@ export class RegistrationComponent implements OnInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      let loginRequest = {
+        username: this.validateForm.value['username'],
+        password: this.validateForm.value['password'],
+      }
+      this.http.post("/authapi/auth/signup/", loginRequest).then(res=> {
+        console.log( 'regi: ',res)
+        window.location.href = '/application-form'
+      } ).catch(error=>{
+        console.log(error)
+        alert(error.response.data)
+      })
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -47,7 +58,7 @@ export class RegistrationComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(private fb: UntypedFormBuilder, private http: HttpService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

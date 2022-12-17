@@ -19,7 +19,12 @@ export class VerifyTokenComponent implements OnInit {
       token: this.generateTokenForm.value['token'],
       email: this.generateTokenForm.value['email']
     }
-    this.http.post('/authapi/auth/verify_token',verifyTokenRequest)
+    this.http.post('/authapi/auth/verify_token',verifyTokenRequest).then(res=>{
+      window.location.href = '/default/registration';
+    }).catch(error=>{
+      console.log("error",error)
+      alert(error.response.data)
+    })
 
     console.log(this.generateTokenForm.value);
   }
@@ -29,10 +34,6 @@ export class VerifyTokenComponent implements OnInit {
       token: ['', [Validators.required],],
       email: ['', [Validators.required, Validators.email]],
     });
-
-    // this.http.post
-
-
   }
 
   constructor(private fb: UntypedFormBuilder, private http: HttpService) { }
