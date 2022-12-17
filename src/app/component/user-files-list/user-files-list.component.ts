@@ -18,8 +18,20 @@ export class UserFilesListComponent implements OnInit {
   selectedFile: File | undefined;
   size: NzButtonSize = 'large';
   opt_step: number | undefined;
-  @Input() info!: any;
-  @Input() downloadUrl!: any;
+  // info={
+  //   userId:[null],
+  //   work_authorization:[null],
+  //   startDate: [null],
+  //   endDate:[null],
+  // }
+  info: object = {
+    "fileType": null
+  }
+  updateFileType(i:number){
+    console.log("firstly");
+    console.log(this.files[i].title)
+  }
+  downloadUrl: string = '/api/file/download'
 
   constructor(private http: HttpService, private httpClient: HttpClient) {
     this.files = [];
@@ -28,7 +40,9 @@ export class UserFilesListComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.setItem("userid", "2");
-
+    // @ts-ignore
+    // this.info['userId']=localStorage.getItem('userid');
+    // console.log("ddd"+this.info['userId']);
     let files_response = this.httpClient.get<any[]>('/api/visa/employee/fileslist/' + localStorage.getItem("userid"))
       .subscribe(Response => {
         this.files = Response.map(
@@ -64,23 +78,23 @@ export class UserFilesListComponent implements OnInit {
       item.onError(err, item.file)
     })
   }
-  downloadFile = () => {
-
-    this.http.post(this.downloadUrl, this.info, {responseType: 'blob'}).then((res: any) => {
-      let blob = new Blob([res.data], {type: `text/plain;charset=utf-8`});
-
-      let downloadElement = document.createElement("a");
-      let href = window.URL.createObjectURL(blob);
-      downloadElement.href = href;
-      // fileNHame
-      downloadElement.download = res.headers['content-disposition'];
-      document.body.appendChild(downloadElement);
-      // download file
-      downloadElement.click();
-      // remove child
-      document.body.removeChild(downloadElement);
-    }).catch()
-  }
+  // downloadFile = () => {
+  //
+  //   this.http.post(this.downloadUrl, this.info, {responseType: 'blob'}).then((res: any) => {
+  //     let blob = new Blob([res.data], {type: `text/plain;charset=utf-8`});
+  //
+  //     let downloadElement = document.createElement("a");
+  //     let href = window.URL.createObjectURL(blob);
+  //     downloadElement.href = href;
+  //     // fileNHame
+  //     downloadElement.download = res.headers['content-disposition'];
+  //     document.body.appendChild(downloadElement);
+  //     // download file
+  //     downloadElement.click();
+  //     // remove child
+  //     document.body.removeChild(downloadElement);
+  //   }).catch()
+  // }
 
   goToLink(url: string) {
     var index = url.lastIndexOf('\\');

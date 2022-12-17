@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <h2>{{selectedFile}}</h2>
-  <tr *ngFor="let file of files">
+  <tr *ngFor="let file of files;let i = index;">
     <!--    [class.selected]="file === selectedFile">-->
     <th (click)="onSelect(file)">{{file.id}}</th>
 <!--    <td>{{file.employeeid}}</td>-->
@@ -27,5 +27,6 @@
     <td>{{file.comment}}</td>
     <td>{{file.createddate}}</td>
     <td>{{file.createdby}}</td>
+    <td><app-download-file [downloadUrl] ="downloadUrl" [info]="info" (click)="updateFileType(i)"></app-download-file></td>
   </tr>
 

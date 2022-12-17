@@ -90,7 +90,8 @@ export class UserStatusManagementComponent implements OnInit {
               //TODO string type
               work_authorization: data.visaStatus.workAuthorization,
               // expiration:this.currentDate
-              endDate: data.visaStatus.endDate.toString().split('T')[0],
+              // green card and citizen has no end date
+              endDate: data.visaStatus.endDate==null?null:data.visaStatus.endDate.toString().split('T')[0],
               expiration: this.days_between(new Date(data.visaStatus.endDate), this.currentDate),
               // expiration:M
               action: "send notification",

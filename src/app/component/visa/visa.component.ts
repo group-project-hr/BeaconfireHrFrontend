@@ -25,21 +25,22 @@ export class VisaComponent implements OnInit {
   goToLink(url: string){
     window.open(url, "_blank");
   }
-  info:string="test";
-  fileType_1: string = "OPT Recipt";
+  info: object = {
+    "fileType": "I-983"
+  }
+  fileType_1: string = "OPT Receipt";
   fileType_2: string = "OPT EAD";
   fileType_3: string = "I-983";
   fileType_4: string = "I-20";
   fileType_5: string = "OPT STEM Receipt";
   fileType_6: string = "OPT STEM EAD";
 
-  uploadUrl: string = '/api/visa/file/upload'
-  downloadUrl: string = '/api/visa/file/download'
+  uploadUrl: string = '/api/file/upload'
+  downloadUrl: string = '/api/file/download'
 
 
   submit(e: MouseEvent): void {
     e.preventDefault();
-    // this.http.post('/api/visa/test', this.opt_step);
 
     this.httpClient.post('/api/visa/visastatus', {
       "opt_step": this.opt_step

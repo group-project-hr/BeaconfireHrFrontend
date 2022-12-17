@@ -1,11 +1,11 @@
 <p>visa works!</p>
 <!--<a (click)="goToLink('/api/visa/i983.pdf')">Download I-983 Template</a>-->
-<app-user-files-list></app-user-files-list>
+<!--<app-user-files-list></app-user-files-list>-->
 <!--<app-download-file [downloadUrl]="downloadUrl" [info]="info"></app-download-file>-->
 <div [ngSwitch]="opt_step">
   <form>
     <div *ngSwitchCase="0">
-      Plaese Upload Your Opt Recipt
+      Please Upload Your Opt Receipt
       <nz-form-item>
         <nz-form-control [nzOffset]="7" [nzSpan]="12">
           <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_1"></app-upload-file>
@@ -14,7 +14,7 @@
       </nz-form-item>
     </div>
     <div *ngSwitchCase="1">
-      Plase submit your Opt EAD
+      Please submit your Opt EAD
       <nz-form-item>
         <nz-form-control [nzOffset]="7" [nzSpan]="12">
           <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_2"></app-upload-file>
@@ -43,14 +43,16 @@
 
       <nz-form-item>
         <nz-form-control [nzOffset]="7" [nzSpan]="12">
-          <app-download-file [downloadUrl]="downloadUrl" [info]="fileType_4"></app-download-file>
+          <a (click)="goToLink('/api/visa/i983Instructions.pdf')">Download I-983 Instructions</a>
+          <app-download-file [downloadUrl]="downloadUrl" [info]="info"></app-download-file>
+<!--          <app-download-file [downloadUrl]="downloadUrl" [info]="fileType_4"></app-download-file>-->
           <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_4"></app-upload-file>
           <button nz-button (click)="submit($event)">Submit Form</button>
         </nz-form-control>
       </nz-form-item>
     </div>
     <div *ngSwitchCase="5">
-      Please submit your new OPT STEM Recipt
+      Please submit your new OPT STEM Receipt
       <nz-form-item>
         <nz-form-control [nzOffset]="7" [nzSpan]="12">
           <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_5"></app-upload-file>
