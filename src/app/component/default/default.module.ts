@@ -12,7 +12,7 @@ import { DownloadFileComponent } from './component/download-file/download-file.c
 import { GenerateTokenComponent } from './component/generate-token/generate-token.component';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { RegistrationComponent } from './component/registration/registration.component';
-import { ApplicationFormComponent } from '../application-form/application-form.component';
+import { ApplicationFormComponent } from './component/application-form/application-form.component';
 import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { VerifyTokenComponent } from './component/verify-token/verify-token.component';
 import { DefaultRoutingModule } from './default-routing.module';

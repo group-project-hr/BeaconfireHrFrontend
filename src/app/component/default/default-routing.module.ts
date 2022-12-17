@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { LoginGuard } from 'src/app/service/login.guard';
-import { ApplicationFormComponent } from '../application-form/application-form.component';
+import { ApplicationFormComponent } from './component/application-form/application-form.component';
 import { HousingComponent } from './component/housing/housing.component';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { RegistrationComponent } from './component/registration/registration.component';
