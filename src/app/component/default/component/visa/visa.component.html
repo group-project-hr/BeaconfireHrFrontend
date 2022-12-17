@@ -1,0 +1,75 @@
+<p>visa works!</p>
+<!--<a (click)="goToLink('/api/visa/i983.pdf')">Download I-983 Template</a>-->
+<!--<app-user-files-list></app-user-files-list>-->
+<!--<app-download-file [downloadUrl]="downloadUrl" [info]="info"></app-download-file>-->
+<div [ngSwitch]="opt_step">
+  <form>
+    <div *ngSwitchCase="0">
+      Please Upload Your Opt Receipt
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_1"></app-upload-file>
+          <button nz-button (click)="submit($event)">Submit Form</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div *ngSwitchCase="1">
+      Please submit your Opt EAD
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_2"></app-upload-file>
+          <button nz-button (click)="submit($event)">Submit Form</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div *ngSwitchCase="2">
+      <!--    TODO need to based on expiration days to do-->
+      You need to download and upload your I-983
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <a (click)="goToLink('/api/visa/i983.pdf')">Download I-983 Template</a>
+          <hr>
+          <a (click)="goToLink('/api/visa/i983Instructions.pdf')">Download I-983 Instructions</a>
+          <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_3"></app-upload-file>
+          <button nz-button (click)="submit($event)">Submit Form</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div *ngSwitchCase="3">
+      Waiting for HR signed your I-983 file
+    </div>
+    <div *ngSwitchCase="4">
+      Please submit Your new I-20 and submit your document with your school
+
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <a (click)="goToLink('/api/visa/i983Instructions.pdf')">Download I-983 Instructions</a>
+          <app-download-file [downloadUrl]="downloadUrl" [info]="info"></app-download-file>
+<!--          <app-download-file [downloadUrl]="downloadUrl" [info]="fileType_4"></app-download-file>-->
+          <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_4"></app-upload-file>
+          <button nz-button (click)="submit($event)">Submit Form</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div *ngSwitchCase="5">
+      Please submit your new OPT STEM Receipt
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_5"></app-upload-file>
+          <button nz-button (click)="submit($event)">Submit Form</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div *ngSwitchCase="6">
+      Please submit your new OPT STEM EAD
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <app-upload-file [uploadUrl]="uploadUrl" [info]="fileType_6"></app-upload-file>
+          <button nz-button (click)="submit($event)">Submit Form</button>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+  </form>
+</div>
+<!--<app-upload-file [uploadUrl]="uploadUrl" [info]="info"></app-upload-file>-->

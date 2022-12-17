@@ -24,9 +24,13 @@ export class LoginGuard implements CanActivate {
       if (pathName.includes('test')) {
         resolve(true)
       } else if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
-        if (userinfo && userinfo.basicDataModel && userinfo.basicDataModel.userId && userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
+        console.log(userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP!=null)
+
+        if (userinfo && userinfo.basicDataModel &&  userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
+    console.log(2222222222)
           resolve(true)
         } else if (pathName === '/verifytoken') {
+
           resolve(true)
         } else {
           location.href = "/login"
@@ -47,21 +51,19 @@ export class LoginGuard implements CanActivate {
         } else {
           location.href = "/application-form"
 
-          resolve(false)
-
         }
       }
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
         if (pathName.startsWith("/employee")) {
           resolve(true)
         } else {
-          location.href = "/employee"
+          location.href = "/employee/housing"
         }
       } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
         if (pathName.startsWith("/hr")) {
           resolve(true)
         } else {
-          location.href = "/hr"
+          location.href = "/hr/user_status_management"
         }
       }
       else {

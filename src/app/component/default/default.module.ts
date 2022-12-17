@@ -19,6 +19,16 @@ import { DefaultRoutingModule } from './default-routing.module';
 import { DefaultComponent } from './default.component';
 import { CommonModule } from '@angular/common';
 import { HousingComponent } from './component/housing/housing.component';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzInputModule } from "ng-zorro-antd/input";
+import { NzDescriptionsModule } from "ng-zorro-antd/descriptions";
+import { NzTypographyModule } from "ng-zorro-antd/typography";
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { VisaComponent } from './component/visa/visa.component';
+import { UserFilesListComponent } from './component/user-files-list/user-files-list.component';
+import { UserStatusManagementComponent } from './component/user-status-management/user-status-management.component';
+
 
 @NgModule({
   declarations: [DownloadFileComponent,
@@ -28,8 +38,8 @@ import { HousingComponent } from './component/housing/housing.component';
     RegistrationComponent,
     GenerateTokenComponent,
     RegistrationComponent,
-    ApplicationFormComponent, UploadFileComponent, VerifyTokenComponent,
-  DefaultComponent],
+    ApplicationFormComponent, UploadFileComponent, VerifyTokenComponent, VisaComponent, UserFilesListComponent, UserFilesListComponent,UserStatusManagementComponent,
+    DefaultComponent],
   imports: [
     CommonModule,
     DefaultRoutingModule,
@@ -42,7 +52,14 @@ import { HousingComponent } from './component/housing/housing.component';
     NzRadioModule,
     NzCheckboxModule,
     NzDropDownModule,
-    NzSelectModule
+    NzSelectModule,
+
+    PdfViewerModule,
+    NzCollapseModule,
+    NzTimePickerModule,
+    NzTypographyModule,
+    NzInputModule,
+    NzDescriptionsModule
   ],
   providers: [],
 })

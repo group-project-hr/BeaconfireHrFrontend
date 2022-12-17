@@ -21,6 +21,8 @@ export class UploadFileComponent implements OnInit {
     let formData = new FormData
     formData.append('file', item.file)
     formData.append('info', this.info)
+    console.log("test"+Object.keys(this.info) );
+    console.log("fileType"+this.info.fileType);
     return from(this.http.post(this.uploadUrl, formData)).subscribe(res => {
       item.onSuccess(item.file);
     }, err => {
