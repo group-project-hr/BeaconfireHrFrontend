@@ -10,7 +10,6 @@ import en from '@angular/common/locales/en';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { ShowListComponent } from './component/show-list/show-list.component';
@@ -21,7 +20,6 @@ import { UserFilesListComponent } from './component/user-files-list/user-files-l
 import {UserFilesService} from "./service/user-files.service";
 import { DownloadFileComponent } from './component/download-file/download-file.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { ApplicationFormComponent } from './component/application-form/application-form.component';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
@@ -51,8 +49,9 @@ registerLocaleData(en);
     UserFilesListComponent,
     DownloadFileComponent,
     ApplicationFormComponent,
-    UserStatusManagementComponent
-  ],
+    UserStatusManagementComponent,
+    LoginComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
