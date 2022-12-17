@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
-import {HttpService} from "../../service/http.service";
 import {HttpClient} from "@angular/common/http";
+import { HttpService } from 'src/app/service/http.service';
 
 @Component({
   selector: 'app-visa',

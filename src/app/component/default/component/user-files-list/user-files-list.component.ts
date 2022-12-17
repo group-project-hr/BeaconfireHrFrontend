@@ -1,11 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserFilesService} from "../../service/user-files.service";
 import {from, Subscription} from "rxjs";
-import {HttpService} from "../../service/http.service";
 import {HttpClient} from "@angular/common/http";
-import {File} from "../../file";
 import * as url from "url";
 import {NzButtonSize} from "ng-zorro-antd/button";
+import { HttpService } from 'src/app/service/http.service';
 
 @Component({
   selector: 'app-user-files-list',

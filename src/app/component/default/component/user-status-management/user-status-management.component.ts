@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
-import {HttpService} from "../../service/http.service";
 import {HttpClient} from "@angular/common/http";
 import {NzCollapseModule} from 'ng-zorro-antd/collapse';
 import {ControlValueAccessor, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import { HttpService } from 'src/app/service/http.service';
 
 
 @Component({
