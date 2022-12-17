@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -19,6 +20,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { LoginComponent } from './component/login/login.component';
+
 
 registerLocaleData(en);
 
@@ -34,18 +36,17 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     NzUploadModule,
+    ReactiveFormsModule,
     NzButtonModule,
     NzFormModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     NzDatePickerModule,
     NzRadioModule,
     NzCheckboxModule,
     NzDropDownModule,
-    NzSelectModule
+    NzSelectModule,
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

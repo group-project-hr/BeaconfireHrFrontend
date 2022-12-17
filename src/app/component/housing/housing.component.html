@@ -1,0 +1,63 @@
+<p>housing works!</p>
+
+<div>
+  <button (click)="showHouseDetail()">Housing Detail Page</button>
+  <button (click)="showFacilityReport()">Facility Report Page</button>
+</div>
+
+<div *ngIf="isHouse">
+  <h2>Address</h2>
+  <p>{{ address.addressLine1 }}</p>
+  <p *ngIf="address.addressLine2 !== null">{{ address.addressLine2 }}</p>
+  <p>{{ address.city }}, {{ address.stateAbbr }} {{ address.zipcode }}</p>
+  <hr />
+
+  <h2>Your Roommates</h2>
+  <div *ngFor="let person of persons; let i = index">
+    <p>Roommate {{ i + 1 }}:</p>
+    <div *ngIf="person.preferredName === null; else useFirstName">
+      <p>Name: {{ person.preferredName }}</p>
+    </div>
+    <ng-template #useFirstName>
+      <p>Name: {{ person.firstName }}</p>
+    </ng-template>
+    <p>Phone: {{ person.ceilPhone }}</p>
+    <br />
+  </div>
+</div>
+
+<div *ngIf="isReport">
+  <!-- Report sumbit -->
+  <h2>Submit a Report</h2>
+  <form [formGroup]="houseReportForm">
+    <input type="text" placeholder="Title" formControlName="title" />
+    <input
+      type="text"
+      placeholder="What's wrong?"
+      formControlName="description"
+    />
+    <button (click)="submitReport()">Submit</button>
+  </form>
+  <hr />
+
+  <!--  See all reports  -->
+  <h2>All Reports</h2>
+  <div *ngFor="let report of reports; let i = index" class="report-body">
+    <h4>Report #{{ i + 1 }}</h4>
+    <p>Title: {{ report.title }}</p>
+    <p>Description: {{ report.description }}</p>
+    <p>createdBy: {{ report.createdBy }}</p>
+    <p>reportDate: {{ report.reportDate }}</p>
+    <p>status: {{ report.status }}</p>
+    <form [formGroup]="commentForm">
+      <input type="text" placeholder="your comment" formControlName="comment" />
+      <button (click)="addComment(report.id, i)">Submit</button>
+    </form>
+    <div *ngFor="let comment of report.comments; let j = index" class="comment">
+      <h4>Comment #{{ j + 1 }}</h4>
+      <p>Description: {{ comment.description }}</p>
+      <p>createdBy: {{ comment.createdBy }}</p>
+      <p>commentDate: {{ comment.commentDate }}</p>
+    </div>
+  </div>
+</div>
