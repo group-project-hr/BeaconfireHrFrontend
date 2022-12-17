@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
-
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -22,15 +21,17 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { LoginComponent } from './component/login/login.component';
 
 
+
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    LoginComponent
     ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

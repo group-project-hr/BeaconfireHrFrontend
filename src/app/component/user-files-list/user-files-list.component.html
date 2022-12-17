@@ -1,0 +1,32 @@
+
+<h2>My Files List</h2>
+<h1>{{opt_step}}</h1>
+<div *ngIf="opt_step===0">Content to render when condition is true.</div>
+
+<table class="files_table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+<!--    <th scope="col">EmployeeId</th>-->
+    <th scope="col">Path</th>
+    <th scope="col">Title</th>
+    <th scope="col">Comment</th>
+    <th scope="col">Created Date</th>
+    <th scope="col">Created By User</th>
+  </tr>
+  </thead>
+  <tbody>
+  <h2>{{selectedFile}}</h2>
+  <tr *ngFor="let file of files;let i = index;">
+    <!--    [class.selected]="file === selectedFile">-->
+    <th (click)="onSelect(file)">{{file.id}}</th>
+<!--    <td>{{file.employeeid}}</td>-->
+<!--    TODO change gotolink based on file name-->
+    <td ><a (click)="goToLink(file.path)">{{file.path}}</a></td>
+    <td (click)="onSelect(file)"><a>{{file.title}}</a></td>
+    <td>{{file.comment}}</td>
+    <td>{{file.createddate}}</td>
+    <td>{{file.createdby}}</td>
+    <td><app-download-file [downloadUrl] ="downloadUrl" [info]="info" (click)="updateFileType(i)"></app-download-file></td>
+  </tr>
+

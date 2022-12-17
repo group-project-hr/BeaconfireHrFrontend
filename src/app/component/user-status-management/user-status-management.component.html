@@ -1,0 +1,115 @@
+<p>hr user-status-management works!</p>
+
+
+<nz-collapse nzAccordion>
+<nz-descriptions nzTitle="User Info" *ngFor="let user_info of user_status_info_list; let i = index;">
+  <nz-descriptions-item nzTitle="Name(Legal Name)">{{user_info.name}}</nz-descriptions-item>
+
+  <nz-descriptions-item nzTitle="Work Authorization" >
+    {{user_info.work_authorization}}
+
+    <nz-collapse-panel (click)="getWorkAuthorization(i)">
+<!--      <div *ngIf="!editmode">-->
+<!--      Name:  {{user_info.name}}-->
+<!--      <br>-->
+<!--      Work Authorization:  {{user_info.work_authorization}}-->
+<!--      <br>-->
+<!--      Start Date:  {{user_info.startDate}}<br>-->
+<!--      End Date:  {{user_info.endDate}}<br>-->
+<!--      <button *ngIf="!editmode" (click)="edit(i)">edit</button>-->
+<!--      </div>-->
+
+      <div (dblclick)="doubleClick()">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(i)">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input formControlName="name"[ngModel]='original_name' [nzBorderless]="editmode" [disabled]="disabled">
+            </nz-form-control>
+          </nz-form-item >
+        <br>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Work Authorization</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input formControlName="work_authorization" [ngModel]='original_work_authorization' [nzBorderless]="editmode" [disabled]="disabled">
+            </nz-form-control>
+          </nz-form-item >
+        <br>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">Start Date</nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24">
+              <div *ngIf="editmode"> &nbsp;&nbsp; {{user_info.startDate}}</div>
+              <div *ngIf="!editmode">
+              <nz-date-picker formControlName="startDate" [ngModel]="original_start_date"></nz-date-picker>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">End Date Date</nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24">
+              <div *ngIf="editmode"> &nbsp;&nbsp; {{user_info.endDate}}</div>
+              <div *ngIf="!editmode">
+                <nz-date-picker formControlName="endDate" [ngModel]="original_end_date"></nz-date-picker>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 16, offset: 8 }">
+              <button nz-button nzType="primary">Submit</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+
+    </nz-collapse-panel>
+
+  </nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Expiration Date">{{user_info.endDate}}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Day Left">{{user_info.expiration}}</nz-descriptions-item>
+  <nz-descriptions-item nzTitle="Action Required">
+    {{user_info.action}}
+    <nz-collapse-panel [nzHeader]="documents_show" (click)="documents_received(user_info.id)">
+      Documents Received
+      <tr *ngFor="let file of files">
+        <!--    [class.selected]="file === selectedFile">-->
+<!--        <th>{{file.id}}</th>-->
+        <td>{{file.path}}</td>
+        <td>{{file.title}}</td>
+      </tr>
+      <div [ngSwitch]="opt_step">
+        <form>
+          <div *ngSwitchCase="0">
+            Currently No file uploaded
+          </div>
+          <div *ngSwitchCase="1">
+            Waiting for OPT EAD
+          </div>
+          <div *ngSwitchCase="2">
+            Waiting for submit on I-983
+            <button (click)="submit($event)">Submit Form</button>
+          </div>
+          <div *ngSwitchCase="3">
+            Waiting for hr signed on I-983
+            <button (click)="submit($event)">Approve I-983</button>
+          </div>
+          <div *ngSwitchCase="4">
+            <h1>{{opt_step}}</h1>
+          </div>
+        </form>
+      </div>
+    </nz-collapse-panel>
+  </nz-descriptions-item>
+</nz-descriptions>
+</nz-collapse>
+
+<!--</nz-descriptions>-->
+<!--&lt;!&ndash;<nz-collapse>&ndash;&gt;-->
+<!--&lt;!&ndash;  <nz-collapse-panel&ndash;&gt;-->
+<!--&lt;!&ndash;    *ngFor="let panel of user_status_info_list"&ndash;&gt;-->
+<!--&lt;!&ndash;  [nzHeader]=panel.id >&ndash;&gt;-->
+<!--&lt;!&ndash;    <p style="margin:0;">&ndash;&gt;-->
+<!--&lt;!&ndash;      A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome&ndash;&gt;-->
+<!--&lt;!&ndash;      guest in many households across the world.&ndash;&gt;-->
+<!--&lt;!&ndash;    </p>&ndash;&gt;-->
+<!--&lt;!&ndash;  </nz-collapse-panel>&ndash;&gt;-->
+<!--</nz-collapse>-->
