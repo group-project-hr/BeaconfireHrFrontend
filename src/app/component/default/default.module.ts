@@ -18,10 +18,12 @@ import { VerifyTokenComponent } from './component/verify-token/verify-token.comp
 import { DefaultRoutingModule } from './default-routing.module';
 import { DefaultComponent } from './default.component';
 import { CommonModule } from '@angular/common';
+import { HousingComponent } from './component/housing/housing.component';
 
 @NgModule({
   declarations: [DownloadFileComponent,
     GenerateTokenComponent,
+    HousingComponent,
     OnboardingComponent,
     RegistrationComponent,
     GenerateTokenComponent,

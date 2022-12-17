@@ -24,19 +24,19 @@ export class LoginGuard implements CanActivate {
       if (pathName.includes('test')) {
         resolve(true)
       } else if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
-        if (userinfo && userinfo.basicDataModel &&userinfo.basicDataModel.userId && userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
+        if (userinfo && userinfo.basicDataModel && userinfo.basicDataModel.userId && userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
           resolve(true)
         } else if (pathName === '/verifytoken') {
           resolve(true)
         } else {
-          location.href="/login"
+          location.href = "/login"
         }
       }
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP) {
         if (pathName === '/registration') {
           resolve(true)
         } else {
-          location.href="/registration"
+          location.href = "/registration"
         }
       }
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_APPLICATION_FORM) {
@@ -45,59 +45,59 @@ export class LoginGuard implements CanActivate {
 
           resolve(true)
         } else {
-          location.href= "/application-form"
+          location.href = "/application-form"
 
           resolve(false)
 
         }
       }
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
-          if (pathName.startsWith("/employee")) {
-            resolve(true)
-          } else {
-            location.href="/employee"
-          }
-        } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
-          if (pathName.startsWith("/hr")) {
-            resolve(true)
-          } else {
-            location.href="/hr"
-          }
-        }
-        else {
-          location.href='/login'
+        if (pathName.startsWith("/employee")) {
           resolve(true)
+        } else {
+          location.href = "/employee"
         }
-
-
-
-
-        // resolve(true)
-        // if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
-        //   // this.router.navigate(["/login"])
-        //   resolve( true)
-        // } else if (true) {
-        //   resolve( true)
-        // } else {
-
-        //   // verify Token
-        //   var api = "/api/validateToken";
-        //   this.http.get(api, {
-        //     auth: {
-        //       username: userinfo.token,
-        //       password: ''
-        //     }
-        //   }).then((response: any) => {             
-        //     if (response.data.success == false && response.data.message=="token_error") {
-        //       this.router.navigate(["/login"])
-        //     }else{
-        //       resolve(true);
-        //     }
-        //   })
-        // }
-
+      } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
+        if (pathName.startsWith("/hr")) {
+          resolve(true)
+        } else {
+          location.href = "/hr"
+        }
       }
+      else {
+        location.href = '/login'
+        resolve(true)
+      }
+    }
     )
+
+
+
+    // resolve(true)
+    // if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
+    //   // this.router.navigate(["/login"])
+    //   resolve( true)
+    // } else if (true) {
+    //   resolve( true)
+    // } else {
+
+    //   // verify Token
+    //   var api = "/api/validateToken";
+    //   this.http.get(api, {
+    //     auth: {
+    //       username: userinfo.token,
+    //       password: ''
+    //     }
+    //   }).then((response: any) => {             
+    //     if (response.data.success == false && response.data.message=="token_error") {
+    //       this.router.navigate(["/login"])
+    //     }else{
+    //       resolve(true);
+    //     }
+    //   })
+    // }
+
+
 
   }
 
