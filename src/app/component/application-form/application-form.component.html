@@ -1,10 +1,16 @@
+<div>
+    <nz-form-label [nzSpan]="7">Avatar</nz-form-label>
+
+    <app-upload-file [uploadUrl]="uploadUrl" [info]="info"></app-upload-file>
+</div>
+
 <form nz-form [formGroup]="applicationForm" (ngSubmit)="submitForm()">
     <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>First Name</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="firstNameErrorTpl">
-            <input nz-input formControlName="firstName"  />
+            <input nz-input formControlName="firstName" />
             <ng-template #firstNameErrorTpl let-control>
-                <ng-container *ngIf="control.hasError('maxlength')">The max length of input is 20!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Please input your valid First Name!</ng-container>
                 <ng-container *ngIf="control.hasError('required')">Please input your First Name!</ng-container>
             </ng-template>
         </nz-form-control>
@@ -12,47 +18,54 @@
     <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>Last Name</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="lastNameErrorTpl">
-            <input nz-input formControlName="lastName"  />
+            <input nz-input formControlName="lastName" />
             <ng-template #lastNameErrorTpl let-control>
-                <ng-container *ngIf="control.hasError('maxlength')">The max length of input is 20!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Please input your valid Last Name!</ng-container>
                 <ng-container *ngIf="control.hasError('required')">Please input your Last Name!</ng-container>
             </ng-template>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Middle Name</nz-form-label>
+        <nz-form-label [nzSpan]="7" >Middle Name</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="middleNameerrorTpl">
-            <input nz-input formControlName="middleName"  />
+            <input nz-input formControlName="middleName" />
             <ng-template #middleNameerrorTpl let-control>
-                <ng-container *ngIf="control.hasError('maxlength')">The max length of input is 20!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Please input your valid Middle Name!</ng-container>
             </ng-template>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Preferred Name</nz-form-label>
+        <nz-form-label [nzSpan]="7" >Preferred Name</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="preferredNameerrorTpl">
             <input nz-input formControlName="preferredName" />
             <ng-template #preferredNameerrorTpl let-control>
-                <ng-container *ngIf="control.hasError('maxlength')">The max length of input is 20!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Please input your valid Preferred Name!</ng-container>
             </ng-template>
         </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Avatar</nz-form-label>
-        <nz-form-control [nzSpan]="12" nzHasFeedback>
-            <input nz-input formControlName="avatar" type="file" accept="image/gif,image/jpg,image/png" />
-        </nz-form-control>
-    </nz-form-item>
+
     <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>Current Address</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="currentAddresserrorTpl">
-            <input nz-input formControlName="cellPhone" />
+            <input nz-input formControlName="address1" />
             <ng-template #currentAddresserrorTpl let-control>
-                <ng-container *ngIf="control.hasError('maxlength')">The max length of input is 40!</ng-container>
-                <ng-container *ngIf="control.hasError('required')">Please input your Cell Phone!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Please input valid address!</ng-container>
+                <ng-container *ngIf="control.hasError('required')">Please input your Current Address!</ng-container>
             </ng-template>
         </nz-form-control>
     </nz-form-item>
+    <table>e.g. 1234 Road ST, sad, 12345, New York, NJ</table>
+
+    <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Second Address (Street only)</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="currentAddresserrorTpl">
+            <input nz-input formControlName="address2" />
+            <ng-template #currentAddresserrorTpl let-control>
+                <ng-container *ngIf="control.hasError('pattern')">Please input valid address!</ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+
     <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>Cell Phone</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="cellPhoneerrorTpl">
@@ -65,7 +78,7 @@
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Alternate Phone</nz-form-label>
+        <nz-form-label [nzSpan]="7">Alternate Phone</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="alternatePhoneerrorTpl">
             <input nz-input formControlName="alternatePhone" />
             <ng-template #alternatePhoneerrorTpl let-control>
@@ -74,16 +87,7 @@
             </ng-template>
         </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Alternate Phone</nz-form-label>
-        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="alternatePhoneerrorTpl">
-            <input nz-input formControlName="alternatePhone" />
-            <ng-template #alternatePhoneerrorTpl let-control>
-                <ng-container *ngIf="control.hasError('pattern')">Please input a valid phone number(10 digits)
-                </ng-container>
-            </ng-template>
-        </nz-form-control>
-    </nz-form-item>
+
     <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>Car Info</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="carInfoerrorTpl">
@@ -132,10 +136,14 @@
     <nz-form-item>
         <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Gender</nz-form-label>
         <nz-form-control [nzSm]="16" [nzXs]="24" nzHasFeedback [nzErrorTip]="gendererrorTpl">
-            <nz-radio-group formControlName="gender">
-                <label nz-radio nzValue="male">Male</label>
-                <label nz-radio nzValue="female">Female</label>
-            </nz-radio-group>
+            <nz-select formControlName="gender">
+                    <nz-option nzLabel='Male' nzValue=0></nz-option>
+                    <nz-option nzLabel='Female' nzValue=1></nz-option>
+
+                    <nz-option nzLabel='I don’t want to answer' nzValue=2></nz-option>
+
+            </nz-select>
+
             <ng-template #gendererrorTpl let-control>
                 <ng-container *ngIf="control.hasError('required')">Please choose your gender!</ng-container>
             </ng-template>
@@ -162,33 +170,198 @@
     <nz-form-item *ngIf="!isCitizenOrPermanent">
         <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>What is your work authorization?</nz-form-label>
         <nz-form-control [nzSm]="16" [nzXs]="24" nzHasFeedback [nzErrorTip]="visaTyperrorTpl">
-
             <nz-select formControlName="visaType">
                 <p *ngFor="let visaType of visaTypes">
                     <nz-option nzLabel={{visaType}} nzValue={{visaType}}></nz-option>
                 </p>
-
             </nz-select>
-            <p >
-                If other, please specifying the work authorization
-                <input [(ngModel)]="otherVisaType" [ngModelOptions]="{standalone: true}" (ngModelChange)="otherVisaTypeFn($event)"  />
-            </p>
-
             <ng-template #visaTyperrorTpl let-control>
                 <ng-container *ngIf="control.hasError('required')">Please choose!</ng-container>
             </ng-template>
         </nz-form-control>
     </nz-form-item>
-
+    <nz-form-item *ngIf="applicationForm.value['visaType']=='Other'">
+        <nz-form-label [nzSpan]="7" nzRequired>Please specifying the work authorization</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+            <input nz-input formControlName="otherVisaType" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item *ngIf="!isCitizenOrPermanent">
+        <nz-form-control [nzSm]="16" [nzXs]="24">
+            <nz-form-label *ngIf="applicationForm.value['visaType']!='Other'" [nzSm]="8" [nzXs]="24" nzRequired>Start
+                date/Expiration Date</nz-form-label>
+            <nz-form-label *ngIf="applicationForm.value['visaType']=='Other'" [nzSm]="8" [nzXs]="24" nzRequired>Start
+                date/End Date</nz-form-label>
+            <nz-range-picker formControlName="visaDate"></nz-range-picker>
+        </nz-form-control>
+    </nz-form-item>
     <nz-form-item>
-        <nz-form-control [nzOffset]="7" [nzSpan]="12">
-            <button nz-button nzType="primary" [disabled]="!applicationForm.valid">Submit</button>
-            <button nz-button (click)="resetForm($event)">Reset</button>
+        <nz-form-control [nzSm]="16" [nzXs]="24">
+            <nz-form-label nzRequired="">Do you have a drive license?</nz-form-label>
+            <label nz-checkbox formControlName="haveDriverLicense"> </label>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item *ngIf="applicationForm.value['haveDriverLicense']==true">
+        <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Driver License Numger: </nz-form-label>
+        <input nz-input formControlName="driverLicenseNumber" />
+    </nz-form-item>
+    <nz-form-item *ngIf="applicationForm.value['haveDriverLicense']==true">
+
+        <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>expiration date</nz-form-label>
+        <nz-form-control [nzSm]="16" [nzXs]="24">
+            <nz-date-picker formControlName="driverLicenseExpirationDate"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <div *ngFor="let emergencyContact of listOfEmergencyContact; let i = index">
+        <nz-form-label [nzSpan]="7">Emergency Contact {{i+1}}</nz-form-label>
+        <button *ngIf="i!=0" nz-button (click)="removeECField(emergencyContact, $event)">Delete Emergency Contact
+        </button>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> First Name </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Emergency Contact's first name ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="emergencyContact.id"
+                    [formControlName]="emergencyContact.ecFirstName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" > Middle Name </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Emergency Contact's middle name ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="emergencyContact.id"
+                    [formControlName]="emergencyContact.ecMiddleName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Last Name </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Emergency Contact's last name ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="emergencyContact.id"
+                    [formControlName]="emergencyContact.ecLastName" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Email </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Emergency Contact's email ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="emergencyContact.id"
+                    [formControlName]="emergencyContact.ecEmail" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Phone Number </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Emergency Contact's phone number ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="emergencyContact.id"
+                    [formControlName]="emergencyContact.ecPhone" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Relationship </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Emergency Contact's relationship ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="emergencyContact.id"
+                    [formControlName]="emergencyContact.ecRelationship" />
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+            <button nz-button nzType="dashed" class="add-button" (click)="addECField($event)">
+                <span nz-icon nzType="plus"></span>
+                Add field
+            </button>
         </nz-form-control>
     </nz-form-item>
 
 
+    <nz-form-label [nzSpan]="7">Reference Info</nz-form-label>
+
+
+    <div *ngFor="let reference of listOfReference; let i = index">
+        <button nz-button (click)="removeRField(reference, $event)">Delete Reference </button>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> First Name </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's first name ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rFirstName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" > Middle Name </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's middle name ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rMiddleName" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Last Name </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's last name ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rLastName" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Email </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's email ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rEmail" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Phone Number </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's phone number ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rPhone" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Address </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's Address ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rAddress" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired> Relationship </nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="i === 0 ? 0 : 4"
+                nzErrorTip="Please input Reference's relationship ">
+                <input class="emergency-input" nz-input placeholder="placeholder" [attr.id]="reference.id"
+                    [formControlName]="reference.rRelationship" />
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <nz-form-item *ngIf="listOfReference.length==0">
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+            <button nz-button nzType="dashed" class="add-button" (click)="addRField($event)">
+                <span nz-icon nzType="plus"></span>
+                Add field
+            </button>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+            <button nz-button nzType="primary"  [disabled]="!applicationForm.valid">Submit</button>
+            <button nz-button (click)="resetForm($event)">Reset</button>
+        </nz-form-control>
+    </nz-form-item>
+
 </form>
 <div>
-    <button (click)='tewst()'>fff</button>
+    <button (click)='test()'>fff</button>
+</div>
+
+<div>
+    <button (click)='getFormValidationErrors()'>getFormValidationErrors</button>
 </div>

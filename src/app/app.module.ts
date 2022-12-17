@@ -10,35 +10,25 @@ import en from '@angular/common/locales/en';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
-import { OnboardingComponent } from './component/onboarding/onboarding.component';
-import { HousingComponent } from './component/housing/housing.component';
-import { DownloadFileComponent } from './component/download-file/download-file.component';
+
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { ApplicationFormComponent } from './component/application-form/application-form.component';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { UnauthorizedAccessComponent } from './component/errors/unauthorized-access/unauthorized-access.component';
-import { InternalServerComponent } from './component/errors/internal-server/internal-server.component';
+import { LoginComponent } from './component/login/login.component';
+
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadFileComponent,
-    OnboardingComponent,
-    HousingComponent,
-    DownloadFileComponent,
-    ApplicationFormComponent,
-    UnauthorizedAccessComponent,
-    InternalServerComponent,
-  ],
+    LoginComponent,
+    ],
   imports: [
     BrowserModule,
     FormsModule,

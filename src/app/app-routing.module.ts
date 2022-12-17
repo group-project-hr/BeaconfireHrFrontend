@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HousingComponent } from './component/housing/housing.component';
-import { InternalServerComponent } from './component/errors/internal-server/internal-server.component';
-import { OnboardingComponent } from './component/onboarding/onboarding.component';
-import { UnauthorizedAccessComponent } from './component/errors/unauthorized-access/unauthorized-access.component';
+import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [
-  { path: 'employee/onboarding', component: OnboardingComponent },
-  { path: 'employee/housing', component: HousingComponent },
-  { path: '500', component: InternalServerComponent },
-  { path: '401', component: UnauthorizedAccessComponent },
+
+  { path: 'login', component: LoginComponent }, {
+    path: '', loadChildren: () => import('./component/default/default.module').then(m => m.DefaultModule)
+  }
 ];
 
 @NgModule({
