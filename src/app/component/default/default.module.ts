@@ -28,6 +28,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { VisaComponent } from './component/visa/visa.component';
 import { UserFilesListComponent } from './component/user-files-list/user-files-list.component';
 import { UserStatusManagementComponent } from './component/user-status-management/user-status-management.component';
+import {ApplilcationFormShowComponent} from "./component/applilcation-form-show/applilcation-form-show.component";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UserStatusManagementComponent } from './component/user-status-managemen
     RegistrationComponent,
     GenerateTokenComponent,
     RegistrationComponent,
+    ApplilcationFormShowComponent,
     ApplicationFormComponent, UploadFileComponent, VerifyTokenComponent, VisaComponent, UserFilesListComponent, UserFilesListComponent,UserStatusManagementComponent,
     DefaultComponent],
   imports: [

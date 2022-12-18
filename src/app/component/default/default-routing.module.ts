@@ -11,6 +11,7 @@ import { UserStatusManagementComponent } from './component/user-status-managemen
 import { VerifyTokenComponent } from './component/verify-token/verify-token.component';
 import { VisaComponent } from './component/visa/visa.component';
 import { DefaultComponent } from './default.component';
+import {ApplilcationFormShowComponent} from "./component/applilcation-form-show/applilcation-form-show.component";
 
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'employee/visa', component: VisaComponent},
       { path: 'employee/visa/user/fileslist', component: UserFilesListComponent},
       { path: 'hr/user_status_management', component: UserStatusManagementComponent},
+      { path: "hr/application_workflow", component:ApplilcationFormShowComponent},
       {
         path: '**', redirectTo: "/login"
       }

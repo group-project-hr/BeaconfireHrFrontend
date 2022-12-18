@@ -1,0 +1,71 @@
+<p>hr application-form-show works!</p>
+
+<nz-collapse nzAccordion>
+
+
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(j)" *ngFor="let user_info of user_info_list;let j=index">
+      Name(Legal Name) : {{user_info.name}} <br>
+      Perferred Name:{{user_info.perferred_name}}<br>
+      Address:{{user_info.address}}<br>
+      City:{{user_info.city}}<br>
+      Zipcode:{{user_info.zipcode}}<br>
+      State Name:{{user_info.state_name}}<br>
+      State Abbr:{{user_info.state_abbr}}<br>
+      Email:{{user_info.email}}<br>
+      Ceilphone:{{user_info.ceilphone}}<br>
+      Workphone:{{user_info.workphone}}<br>
+      Gender:{{user_info.gender}}<br>
+      SSN :{{user_info.ssn}}<br>
+      Car Info :{{user_info.car_info}}<br>
+      Birth Date :{{user_info.birth_date}}<br>
+      License Number :{{user_info.license_number}}<br>
+      License Expir :{{user_info.license_expir}}<br>
+      Created Date :{{user_info.created_date}}<br>
+      Application Status :{{user_info.status}}<br>
+      App Type{{user_info.app_type}}<br>
+      Comments{{user_info.comments}}<br>
+      <nz-form-item *ngFor="let control of listOfControl; let i = index">
+
+        <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="i === 0" [nzFor]="control.controlInstance">
+          Comments
+        </nz-form-label>
+        <nz-form-control
+          [nzXs]="24"
+          [nzSm]="20"
+          [nzOffset]="i === 0 ? 0 : 4"
+          nzErrorTip="Please input Comment or delete this field."
+
+        >
+          <input
+            class="comments-input"
+            nz-input
+            placeholder="Comment"
+            [attr.id]="control.id"
+            [formControlName]="control.controlInstance"
+          />
+          <span
+            nz-icon
+            nzType="minus-circle-o"
+            class="dynamic-delete-button"
+            (click)="removeField(control, $event)"
+          ></span>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+          <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
+            <span nz-icon nzType="plus"></span>
+            Add field
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+          <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+</nz-collapse>
+
+
