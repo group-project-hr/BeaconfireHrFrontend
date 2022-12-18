@@ -1,0 +1,91 @@
+<p>house-management works!</p>
+
+<!-- House list page -->
+<div *ngIf="!isDetail">
+  <div *ngFor="let house of houses; let i = index">
+    <div class="house-card" (click)="getHouseDetail(house.id)">
+      <p>House id: {{ house.id }}</p>
+      <p>
+        Address: {{ house.address.addressLine1 }}
+        {{ house.address.addressLine2 }}
+        {{ house.address.city }}, {{ house.address.stateAbbr }}
+        {{ house.address.zipcode }}
+      </p>
+      <p>Landlord: {{ house.landlord }}</p>
+      <p>Phone: {{ house.phone }}</p>
+      <p>Email: {{ house.email }}</p>
+      <p>Number of tenants: {{ house.numPerson }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- House detail page -->
+<div *ngIf="isDetail">
+  <button (click)="goBackList()">Go back to list</button>
+  <hr />
+  <button (click)="showHouseInfo()">House information</button>
+  <button (click)="showFacilityInfo()">Facility information</button>
+  <button (click)="showEmployeeInfo()">Employee information</button>
+
+  <!-- house information -->
+  <div *ngIf="isHouseInfo">
+    <p>
+      Address: {{ houseDetail.address.addressLine1 }}
+      {{ houseDetail.address.addressLine2 }}
+      {{ houseDetail.address.city }}, {{ houseDetail.address.stateAbbr }}
+      {{ houseDetail.address.zipcode }}
+    </p>
+    <p>Landlord: {{ houseDetail.landlord }}</p>
+    <p>Phone: {{ houseDetail.phone }}</p>
+    <p>Email: {{ houseDetail.email }}</p>
+    <p>Number of tenants: {{ houseDetail.numPerson }}</p>
+  </div>
+  <!-- facility information -->
+  <div *ngIf="isFacilityInfo">
+    <p>Number of beds: {{ facilityDetail.numBed }}</p>
+    <p>Number of mattress: {{ facilityDetail.numMattress }}</p>
+    <p>Number of tables: {{ facilityDetail.numTable }}</p>
+    <p>Number of chairs: {{ facilityDetail.numChair }}</p>
+    <hr />
+    <!-- Reports -->
+    <h2>All Reports</h2>
+    <div
+      *ngFor="let report of facilityDetail.reports; let i = index"
+      class="report-body"
+    >
+      <h4>Report #{{ i + 1 }}</h4>
+      <p>Title: {{ report.title }}</p>
+      <p>Description: {{ report.description }}</p>
+      <p>createdBy: {{ report.createdBy }}</p>
+      <p>reportDate: {{ report.reportDate }}</p>
+      <p>status: {{ report.status }}</p>
+      <form [formGroup]="commentForm">
+        <input
+          type="text"
+          placeholder="your comment"
+          formControlName="comment"
+        />
+        <button (click)="addComment(report.id, i)">Submit</button>
+      </form>
+      <div
+        *ngFor="let comment of report.comments; let j = index"
+        class="comment"
+      >
+        <h4>Comment #{{ j + 1 }}</h4>
+        <p>Description: {{ comment.description }}</p>
+        <p>createdBy: {{ comment.createdBy }}</p>
+        <p>commentDate: {{ comment.commentDate }}</p>
+      </div>
+    </div>
+  </div>
+  <!-- employee information -->
+  <div *ngIf="isEmployeeInfo">
+    <div *ngFor="let employee of employeeDetail; let i = index">
+      <p>Employe #{{ i + 1 }}</p>
+      <p>Name: {{ employee.name }}</p>
+      <p>Phone: {{ employee.phone }}</p>
+      <p>Email: {{ employee.email }}</p>
+      <p>Car: {{ employee.car }}</p>
+    </div>
+  </div>
+</div>

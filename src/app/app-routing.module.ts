@@ -4,10 +4,12 @@ import { HousingComponent } from './component/housing/housing.component';
 import { InternalServerComponent } from './component/errors/internal-server/internal-server.component';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { UnauthorizedAccessComponent } from './component/errors/unauthorized-access/unauthorized-access.component';
+import { HouseManagementComponent } from './component/house-management/house-management.component';
 
 const routes: Routes = [
   { path: 'employee/onboarding', component: OnboardingComponent },
   { path: 'employee/housing', component: HousingComponent },
+  { path: 'hr/house-management', component: HouseManagementComponent },
   { path: '500', component: InternalServerComponent },
   { path: '401', component: UnauthorizedAccessComponent },
 ];

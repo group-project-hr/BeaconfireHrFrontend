@@ -25,6 +25,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { UnauthorizedAccessComponent } from './component/errors/unauthorized-access/unauthorized-access.component';
 import { InternalServerComponent } from './component/errors/internal-server/internal-server.component';
+import { HouseManagementComponent } from './component/house-management/house-management.component';
 
 registerLocaleData(en);
 
@@ -38,6 +39,7 @@ registerLocaleData(en);
     ApplicationFormComponent,
     UnauthorizedAccessComponent,
     InternalServerComponent,
+    HouseManagementComponent,
   ],
   imports: [
     BrowserModule,
