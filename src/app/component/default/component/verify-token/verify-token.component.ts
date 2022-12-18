@@ -20,7 +20,7 @@ export class VerifyTokenComponent implements OnInit {
       email: this.generateTokenForm.value['email']
     }
     this.http.post('/authapi/auth/verify_token',verifyTokenRequest).then(res=>{
-      window.location.href = '/default/registration';
+      window.location.href = '/registration';
     }).catch(error=>{
       console.log("error",error)
       alert(error.response.data)
