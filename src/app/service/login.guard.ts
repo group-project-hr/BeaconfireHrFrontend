@@ -28,11 +28,9 @@ export class LoginGuard implements CanActivate {
       if (pathName.includes('test')) {
         resolve(true)
       } else if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
-        console.log(userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP != null)
-
         if (userinfo && userinfo.basicDataModel && userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
           resolve(true)
-        } else if (pathName === '/verifytoken') {
+        } else if (pathName === '/login' || pathName === '/verifytoken') {
           resolve(true)
         } else {
           location.href = "/login"

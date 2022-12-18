@@ -21,19 +21,17 @@ const routes: Routes = [
     component: DefaultComponent,
     canActivate: [LoginGuard],
     children: [
-      {path:'login', component: LoginComponent},
+      { path: 'login', component: LoginComponent },
       { path: 'test', component: OnboardingComponent },
       { path: 'verifytoken', component: VerifyTokenComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'application-form', component: ApplicationFormComponent },
       { path: 'employee/housing', component: HousingComponent },
-      { path: 'employee/visa/file/preview', component: PdfViewerComponent},
-      { path: 'employee/visa', component: VisaComponent},
-      { path: 'employee/visa/user/fileslist', component: UserFilesListComponent},
-      { path: 'hr/user_status_management', component: UserStatusManagementComponent},
-      {
-        path: '**', redirectTo: "/login"
-      }
+      { path: 'employee/visa/file/preview', component: PdfViewerComponent },
+      { path: 'employee/visa', component: VisaComponent },
+      { path: 'employee/visa/user/fileslist', component: UserFilesListComponent },
+      { path: 'hr/user_status_management', component: UserStatusManagementComponent },
+      { path: '**', redirectTo: "/login" }
     ]
   }
 

@@ -12,14 +12,14 @@ export class GenerateTokenComponent implements OnInit {
 
   generateTokenForm: any;
   //TODO
-  houseIds = [1]
+  houseIds = []
 
 
   submitForm(): void {
     let info = this.generateTokenForm.value
-    this.http.get('/authapi/auth/generate_token?email='+this.generateTokenForm.value['email'] +"&houseId="+this.generateTokenForm.value['houseId'])
+    this.http.get('/authapi/auth/generate_token?email=' + this.generateTokenForm.value['email'] + "&houseId=" + this.generateTokenForm.value['houseId'])
 
-    console.log( this.generateTokenForm.value);
+    console.log(this.generateTokenForm.value);
   }
 
   ngOnInit(): void {
@@ -29,7 +29,13 @@ export class GenerateTokenComponent implements OnInit {
 
     });
 
-    // this.http.post
+    this.http.get("/api/hr/housing/list").then((res: any) => {
+      res.data.map((house: any) => {
+       ( this.houseIds as string[]).push(house['id'])
+      })
+    }).catch(error => {
+
+    })
 
 
   }
