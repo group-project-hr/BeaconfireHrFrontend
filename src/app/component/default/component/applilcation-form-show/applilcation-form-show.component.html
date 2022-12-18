@@ -64,6 +64,9 @@
         <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
           <button nz-button nzType="primary">Submit</button>
         </nz-form-control>
+        <button nz-button nzType="primary" *ngIf="user_info.status==='initial'" (click)="approveStatus(j)">Approve</button>
+        <button nz-button nzType="default" *ngIf="user_info.status==='initial'"(click)="declineStatus(j)">Decline</button>
+
       </nz-form-item>
     </form>
 </nz-collapse>
