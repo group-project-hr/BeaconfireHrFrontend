@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './component/login/login.component';
+import { LoginComponent } from './component/default/component/login/login.component';
 
 const routes: Routes = [
 
-  { path: 'login', component: LoginComponent }, {
+  {
     path: '', loadChildren: () => import('./component/default/default.module').then(m => m.DefaultModule)
   },
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -12,7 +12,7 @@ import { DownloadFileComponent } from './component/download-file/download-file.c
 import { GenerateTokenComponent } from './component/generate-token/generate-token.component';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { RegistrationComponent } from './component/registration/registration.component';
-import { ApplicationFormComponent } from '../application-form/application-form.component';
+import { ApplicationFormComponent } from './component/application-form/application-form.component';
 import { UploadFileComponent } from './component/upload-file/upload-file.component';
 import { VerifyTokenComponent } from './component/verify-token/verify-token.component';
 import { DefaultRoutingModule } from './default-routing.module';
@@ -28,6 +28,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { VisaComponent } from './component/visa/visa.component';
 import { UserFilesListComponent } from './component/user-files-list/user-files-list.component';
 import { UserStatusManagementComponent } from './component/user-status-management/user-status-management.component';
+import { LoginComponent } from './component/login/login.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { UserStatusManagementComponent } from './component/user-status-managemen
     HousingComponent,
     OnboardingComponent,
     RegistrationComponent,
+    LoginComponent,
     GenerateTokenComponent,
     RegistrationComponent,
     ApplicationFormComponent, UploadFileComponent, VerifyTokenComponent, VisaComponent, UserFilesListComponent, UserFilesListComponent,UserStatusManagementComponent,

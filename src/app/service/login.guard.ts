@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { StorageService } from './storage.service';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
+import { DefaultRoutingModule } from '../component/default/default-routing.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
-  constructor(private storage: StorageService, private router: Router, private http: HttpService) { }
+  constructor(private storage: StorageService, private router: Router, private http: HttpService,) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -19,18 +20,19 @@ export class LoginGuard implements CanActivate {
     let userinfo = this.storage.get("beaconfire-session");
     console.log('userInfo', userinfo)
     console.log('pathName', pathName)
+    console.log(route)
+    console.log(state)
 
     return new Promise((resolve, reject) => {
+      resolve(true)
       if (pathName.includes('test')) {
         resolve(true)
       } else if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
-        console.log(userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP!=null)
+        console.log(userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP != null)
 
-        if (userinfo && userinfo.basicDataModel &&  userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
-    console.log(2222222222)
+        if (userinfo && userinfo.basicDataModel && userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
           resolve(true)
         } else if (pathName === '/verifytoken') {
-
           resolve(true)
         } else {
           location.href = "/login"
@@ -46,7 +48,6 @@ export class LoginGuard implements CanActivate {
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_APPLICATION_FORM) {
 
         if (pathName === '/application-form') {
-
           resolve(true)
         } else {
           location.href = "/application-form"
@@ -54,13 +55,13 @@ export class LoginGuard implements CanActivate {
         }
       }
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
-        if (pathName.startsWith("/employee")) {
+        if ( employeeRoutes.has(pathName)) {
           resolve(true)
         } else {
           location.href = "/employee/housing"
         }
       } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
-        if (pathName.startsWith("/hr")) {
+        if (hrRoutes.has(pathName)) {
           resolve(true)
         } else {
           location.href = "/hr/user_status_management"
@@ -112,3 +113,9 @@ enum RoleEnum {
   STANDARD_USER = "STANDARD_USER",
   ADMIN = "ADMIN"
 }
+
+const employeeRoutes = new Set<String>().add("/employee/housing").add("/employee/visa/file/preview").add("/employee/visa")
+  .add("/employee/visa/user/fileslist")
+
+  const hrRoutes = new Set<String>()  .add("/hr/user_status_management")
+
