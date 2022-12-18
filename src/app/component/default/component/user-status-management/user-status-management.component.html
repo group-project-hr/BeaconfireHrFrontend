@@ -73,7 +73,7 @@
       <tr *ngFor="let file of files">
         <!--    [class.selected]="file === selectedFile">-->
 <!--        <th>{{file.id}}</th>-->
-        <td>{{file.path}}</td>
+        <a (click)="goToLink(file.path)">{{file.path}}</a>
         <td>{{file.title}}</td>
       </tr>
       <div [ngSwitch]="opt_step">

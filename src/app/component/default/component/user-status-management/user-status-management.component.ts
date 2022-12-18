@@ -155,5 +155,13 @@ export class UserStatusManagementComponent implements OnInit {
   doubleClick(): void{
     this.editmode=!this.editmode;
   }
+  goToLink(url: string) {
+    var index = url.lastIndexOf('\\');
+    var filename = url.substring(index + 1,);
+    var filepath = url.substring(0,index);
+    var filepath_index=filepath.lastIndexOf('\\');
+    var fileType=filepath.substring(filepath_index+1,);
+    window.open("http://127.0.0.1:8887/" + fileType + '/' + filename, "_blank");
+  }
 
 }
