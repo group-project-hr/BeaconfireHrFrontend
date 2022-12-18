@@ -18,7 +18,6 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-import { LoginComponent } from './component/login/login.component';
 
 
 
@@ -26,8 +25,7 @@ registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent
+    AppComponent
     ],
   imports: [
     BrowserModule,
