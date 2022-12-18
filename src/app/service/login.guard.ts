@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { StorageService } from './storage.service';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
-import { DefaultRoutingModule } from '../component/default/default-routing.module';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +17,6 @@ export class LoginGuard implements CanActivate {
     let pathName = window.location.pathname;
 
     let userinfo = this.storage.get("beaconfire-session");
-    console.log('userInfo', userinfo)
-    console.log('pathName', pathName)
-    console.log(route)
-    console.log(state)
 
     return new Promise((resolve, reject) => {
       resolve(true)
