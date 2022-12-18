@@ -21,55 +21,56 @@ export class LoginGuard implements CanActivate {
     console.log('pathName', pathName)
 
     return new Promise((resolve, reject) => {
-      if (pathName.includes('test')) {
         resolve(true)
-      } else if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
-        console.log(userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP!=null)
-
-        if (userinfo && userinfo.basicDataModel &&  userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
-    console.log(2222222222)
-          resolve(true)
-        } else if (pathName === '/verifytoken') {
-
-          resolve(true)
-        } else {
-          location.href = "/login"
-        }
-      }
-      else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP) {
-        if (pathName === '/registration') {
-          resolve(true)
-        } else {
-          location.href = "/registration"
-        }
-      }
-      else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_APPLICATION_FORM) {
-
-        if (pathName === '/application-form') {
-
-          resolve(true)
-        } else {
-          location.href = "/application-form"
-
-        }
-      }
-      else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
-        if (pathName.startsWith("/employee")) {
-          resolve(true)
-        } else {
-          location.href = "/employee/housing"
-        }
-      } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
-        if (pathName.startsWith("/hr")) {
-          resolve(true)
-        } else {
-          location.href = "/hr/user_status_management"
-        }
-      }
-      else {
-        location.href = '/login'
-        resolve(true)
-      }
+    //   if (pathName.includes('test')) {
+    //     resolve(true)
+    //   } else if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
+    //     console.log(userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP!=null)
+    //
+    //     if (userinfo && userinfo.basicDataModel &&  userinfo.basicDataModel.roleEnum && userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP && pathName === '/registration') {
+    // console.log(2222222222)
+    //       resolve(true)
+    //     } else if (pathName === '/verifytoken') {
+    //
+    //       resolve(true)
+    //     } else {
+    //       location.href = "/login"
+    //     }
+    //   }
+    //   else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_SIGNUP) {
+    //     if (pathName === '/registration') {
+    //       resolve(true)
+    //     } else {
+    //       location.href = "/registration"
+    //     }
+    //   }
+    //   else if (userinfo.basicDataModel.roleEnum == RoleEnum.READY_FOR_APPLICATION_FORM) {
+    //
+    //     if (pathName === '/application-form') {
+    //
+    //       resolve(true)
+    //     } else {
+    //       location.href = "/application-form"
+    //
+    //     }
+    //   }
+    //   else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
+    //     if (pathName.startsWith("/employee")) {
+    //       resolve(true)
+    //     } else {
+    //       location.href = "/employee/housing"
+    //     }
+    //   } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
+    //     if (pathName.startsWith("/hr")) {
+    //       resolve(true)
+    //     } else {
+    //       location.href = "/hr/user_status_management"
+    //     }
+    //   }
+    //   else {
+    //     location.href = '/login'
+    //     resolve(true)
+    //   }
     }
     )
 
@@ -90,7 +91,7 @@ export class LoginGuard implements CanActivate {
     //       username: userinfo.token,
     //       password: ''
     //     }
-    //   }).then((response: any) => {             
+    //   }).then((response: any) => {
     //     if (response.data.success == false && response.data.message=="token_error") {
     //       this.router.navigate(["/login"])
     //     }else{

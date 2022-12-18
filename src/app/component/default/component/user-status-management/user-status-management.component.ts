@@ -17,6 +17,7 @@ export class UserStatusManagementComponent implements OnInit {
   files: Array<any>;
   user_status_info_list: Array<any>;
   opt_step: any;
+  userId:number|undefined
 
   constructor(private http: HttpService, private httpClient: HttpClient,private el: ElementRef,private fb: UntypedFormBuilder) {
     this.user_status_info_list = [];
@@ -95,7 +96,7 @@ export class UserStatusManagementComponent implements OnInit {
               expiration: this.days_between(new Date(data.visaStatus.endDate), this.currentDate),
               // expiration:M
               action: "send notification",
-              startDate: data.visaStatus.startDate.toString().split('T')[0]
+              startDate: data.visaStatus.startDate==null?null:data.visaStatus.startDate.toString().split('T')[0]
 
             }
           }

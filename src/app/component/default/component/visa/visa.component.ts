@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { HttpService } from 'src/app/service/http.service';
+import {StorageService} from "../../../../service/storage.service";
 
 @Component({
   selector: 'app-visa',
@@ -11,16 +12,31 @@ export class VisaComponent implements OnInit {
 
   opt_step: number | undefined;
   // @Input() info: string | undefined;
-  constructor(private http: HttpService, private httpClient: HttpClient) { }
-
+  constructor(private http: HttpService, private httpClient: HttpClient,private storage:StorageService) { }
+  //FIXME Change the userID
+  userId: number | undefined;
   ngOnInit(): void {
-    localStorage.setItem("userid","2");
-    let opt_repsonse = this.httpClient.get<any>('/api/visa/employee/' + localStorage.getItem("userid"))
-      .subscribe(
-        (data: any) =>
-        {
-          this.opt_step = data.optStep;
-        });
+
+    var userlocalData=localStorage.getItem("beaconfire-session");
+    // @ts-ignore
+    userlocalData=JSON.parse(userlocalData);
+    // @ts-ignore
+    // TODO finsihed but no data currently
+    // let userId=userlocalData.basicDataModel.userId;
+    this.userId='2';
+    let opt_repsonse = this.http.get('/api/visa/employee/' + this.userId)
+      .then(((response) =>{
+          // @ts-ignore
+          let data = response.data;
+        this.opt_step=data.optStep;
+      })
+        );
+    // let opt_repsonse = this.httpClient.get<any>('/api/visa/employee/' + userId)
+    //   .subscribe(
+    //     (data: any) =>
+    //     {
+    //       this.opt_step = data.optStep;
+    //     });
   }
   goToLink(url: string){
     window.open(url, "_blank");
@@ -42,6 +58,7 @@ export class VisaComponent implements OnInit {
   submit(e: MouseEvent): void {
     e.preventDefault();
 
+
     this.httpClient.post('/api/visa/visastatus', {
       "opt_step": this.opt_step
     }).subscribe(
@@ -49,16 +66,14 @@ export class VisaComponent implements OnInit {
       },
       err => console.log(err)
     );
-    let opt_repsonse = this.httpClient.get<any>('/api/visa/employee/' + localStorage.getItem("userid"))
-      .subscribe(
-        (data: any) =>
-        {
-          this.opt_step = data.optStep;
-        });
+    let opt_repsonse = this.http.get('/api/visa/employee/' + this.userId)
+      .then(((response) =>{
+          // @ts-ignore
+          let data = response.data;
+          this.opt_step=data.optStep;
+        })
+      );
     location.reload();
 
-    // // @ts-ignore
-    // // this.opt_step++;
-    console.log(this.opt_step);
   }
 }
