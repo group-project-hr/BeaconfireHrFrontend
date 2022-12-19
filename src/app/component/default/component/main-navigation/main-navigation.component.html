@@ -1,0 +1,22 @@
+<div *ngIf="userinfo && userinfo.basicDataModel">
+    <div *ngIf="userinfo.basicDataModel.roleEnum!='READY_FOR_SIGNUP'">
+        <button (click)="logout()" routerLink="/login">Logout </button>
+    </div>
+
+    <div *ngIf="userinfo.basicDataModel.roleEnum=='ADMIN'">
+        <button routerLink="/">Home </button>
+        <button>Employee Profile </button>
+        <button routerLink="/hr/user_status_management">Visa Status Management </button>]
+        <button routerLink="/hr/application_workflow">Hire</button>
+        <button routerLink="/hr/house-management">House Management </button>
+    </div>
+
+    <div *ngIf=" userinfo.basicDataModel.roleEnum=='STANDARD_USER'  ">
+        <button routerLink="/">Home </button>
+        <button>Personal Information </button>
+        <button routerLink="/employee/visa">Visa Status Management </button>
+        <button routerLink="/employee/housing">Housing </button>
+    </div>
+
+
+</div>

@@ -27,11 +27,8 @@ export class LoginComponent implements OnInit {
 
           if (userinfo.basicDataModel.roleEnum === RoleEnum.READY_FOR_APPLICATION_FORM) {
             window.location.href = '/application-form'
-          } else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
-            console.log("!!!!!!!!!")
-            window.location.href = '/employee/housing'
-          }else if(userinfo.basicDataModel.roleEnum === RoleEnum.ADMIN){
-            window.location.href = '/hr/user_status_management'
+          } else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER ||userinfo.basicDataModel.roleEnum === RoleEnum.ADMIN) {
+            window.location.href = '/'
           }
       
         }
