@@ -31,6 +31,7 @@ import { UserStatusManagementComponent } from './component/user-status-managemen
 import { LoginComponent } from './component/login/login.component';
 import { MainNavigationComponent } from './component/main-navigation/main-navigation.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
+import {ApplilcationFormShowComponent} from "./component/applilcation-form-show/applilcation-form-show.component";
 
 
 @NgModule({
