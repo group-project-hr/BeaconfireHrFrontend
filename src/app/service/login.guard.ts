@@ -48,7 +48,7 @@ export class LoginGuard implements CanActivate {
         }
       }
       else if (userinfo.basicDataModel.roleEnum == RoleEnum.STANDARD_USER) {
-        if ( employeeRoutes.has(pathName)) {
+        if (employeeRoutes.has(pathName)) {
           resolve(true)
         } else {
           location.href = "/employee/housing"
@@ -66,9 +66,6 @@ export class LoginGuard implements CanActivate {
       }
     }
     )
-
-
-
     // resolve(true)
     // if (!userinfo || !userinfo.basicDataModel || !userinfo.basicDataModel.roleEnum || !userinfo.basicDataModel.userId || !userinfo.basicDataModel.email) {
     //   // this.router.navigate(["/login"])
@@ -92,9 +89,6 @@ export class LoginGuard implements CanActivate {
     //     }
     //   })
     // }
-
-
-
   }
 
 }
@@ -107,8 +101,7 @@ enum RoleEnum {
   ADMIN = "ADMIN"
 }
 
-const employeeRoutes = new Set<String>().add("/employee/housing").add("/employee/visa/file/preview").add("/employee/visa")
+const employeeRoutes = new Set<String>().add('/').add("/employee/housing").add("/employee/visa/file/preview").add("/employee/visa")
   .add("/employee/visa/user/fileslist")
 
-  const hrRoutes = new Set<String>()  .add("/hr/user_status_management")
-
+const hrRoutes = new Set<String>().add('/').add("/hr/user_status_management").add("hr/application_workflow")
