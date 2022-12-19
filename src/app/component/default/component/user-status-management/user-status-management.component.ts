@@ -41,6 +41,7 @@ export class UserStatusManagementComponent implements OnInit {
           }
         )
       });
+    this.userId=18
     let opt_repsonse = this.httpClient.get<any>('/api/visa/employee/' + userid)
       .subscribe(
         (data: any) =>

@@ -122,23 +122,25 @@ export class ApplilcationFormShowComponent implements OnInit {
         }
       });
     }
+    // location.reload();
   }
 
   approveStatus(i: any) {
     let info = this.validateForm.value
     // @ts-ignore
-    info.employeeId=this.user_info_list[i].id;
+    info.employeeId=this.user_info_list[i].employee_id;
     info.status="completed"
+    console.log("ddd"+info.employeeId);
     this.http.post('/api/hr/update_application_form/status', info)
-    location.reload();
+    // location.reload();
   }
 
   declineStatus(i: any) {
     let info = this.validateForm.value
     // @ts-ignore
-    info.employeeId=this.user_info_list[i].id;
+    info.employeeId=this.user_info_list[i].employee_id;
     info.status="rejected"
     this.http.post('/api/hr/update_application_form/status', info)
-    location.reload();
+    // location.reload();
   }
 }

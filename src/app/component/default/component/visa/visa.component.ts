@@ -63,14 +63,6 @@ export class VisaComponent implements OnInit {
   submit(e: MouseEvent): void {
     e.preventDefault();
 
-
-    // this.http.post('/api/visa/visastatus', {
-    //   "opt_step": this.opt_step
-    // }).subscribe(
-    //   res => {
-    //   },
-    //   err => console.log(err)
-    // );
     this.http.post('/api/visa/visastatus', {
       "opt_step": this.opt_step
     }).then(res => {
@@ -86,10 +78,12 @@ export class VisaComponent implements OnInit {
     if(userId===3){
       userId=18;
     }
-    let opt_repsonse = this.http.get('/api/visa/employee/' + this.userId)
+    let opt_repsonse = this.http.get('/api/visa/employee/' + userId)
       .then(((response) =>{
+
           // @ts-ignore
           let data = response.data;
+        console.log(data)
           this.opt_step=data.optStep;
         })
       );
