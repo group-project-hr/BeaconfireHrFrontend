@@ -1,0 +1,9 @@
+.house-card {
+  border-style: solid;
+  margin-top: 10px;
+  width: 30%;
+}
+
+.house-card:hover {
+  background-color: grey;
+}

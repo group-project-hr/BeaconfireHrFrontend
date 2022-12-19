@@ -21,9 +21,9 @@ import { CommonModule } from '@angular/common';
 import { HousingComponent } from './component/housing/housing.component';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { NzInputModule } from "ng-zorro-antd/input";
-import { NzDescriptionsModule } from "ng-zorro-antd/descriptions";
-import { NzTypographyModule } from "ng-zorro-antd/typography";
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { VisaComponent } from './component/visa/visa.component';
 import { UserFilesListComponent } from './component/user-files-list/user-files-list.component';
@@ -31,21 +31,30 @@ import { UserStatusManagementComponent } from './component/user-status-managemen
 import { LoginComponent } from './component/login/login.component';
 import { MainNavigationComponent } from './component/main-navigation/main-navigation.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
-
+import { HouseManagementComponent } from './component/house-management/house-management.component';
 
 @NgModule({
-  declarations: [DownloadFileComponent,
+  declarations: [
+    DownloadFileComponent,
     MainNavigationComponent,
     HomePageComponent,
     GenerateTokenComponent,
     HousingComponent,
+    HouseManagementComponent,
     OnboardingComponent,
     RegistrationComponent,
     LoginComponent,
     GenerateTokenComponent,
     RegistrationComponent,
-    ApplicationFormComponent, UploadFileComponent, VerifyTokenComponent, VisaComponent, UserFilesListComponent, UserFilesListComponent,UserStatusManagementComponent,
-    DefaultComponent],
+    ApplicationFormComponent,
+    UploadFileComponent,
+    VerifyTokenComponent,
+    VisaComponent,
+    UserFilesListComponent,
+    UserFilesListComponent,
+    UserStatusManagementComponent,
+    DefaultComponent,
+  ],
   imports: [
     CommonModule,
     DefaultRoutingModule,
@@ -65,8 +74,8 @@ import { HomePageComponent } from './component/home-page/home-page.component';
     NzTimePickerModule,
     NzTypographyModule,
     NzInputModule,
-    NzDescriptionsModule
+    NzDescriptionsModule,
   ],
   providers: [],
 })
-export class DefaultModule { }
+export class DefaultModule {}

@@ -19,14 +19,10 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 
-
-
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
