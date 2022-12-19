@@ -17,7 +17,6 @@ export class LoginGuard implements CanActivate {
     let pathName = window.location.pathname;
 
     let userinfo = this.storage.get("beaconfire-session");
-
     return new Promise((resolve, reject) => {
       resolve(true)
       if (pathName.includes('test')) {
@@ -51,19 +50,21 @@ export class LoginGuard implements CanActivate {
         if (employeeRoutes.has(pathName)) {
           resolve(true)
         } else {
-          location.href = "/employee/housing"
+          location.href = "/"
         }
       } else if (userinfo.basicDataModel.roleEnum == RoleEnum.ADMIN) {
         if (hrRoutes.has(pathName)) {
           resolve(true)
         } else {
-          location.href = "/hr/user_status_management"
+          location.href = "/"
         }
       }
       else {
+
         location.href = '/login'
         resolve(true)
       }
+
     }
     )
     // resolve(true)
