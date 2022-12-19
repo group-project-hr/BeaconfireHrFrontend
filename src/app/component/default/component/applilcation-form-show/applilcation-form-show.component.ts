@@ -37,6 +37,7 @@ export class ApplilcationFormShowComponent implements OnInit {
             return {
 
               id: data.id,
+              employee_id:data.employee.id,
               name: data.employee.person.firstName + ' ' + data.employee.person.lastName,
               person_id:data.employee.person.id,
               perferred_name:data.employee.person.perferredName,
@@ -109,7 +110,7 @@ export class ApplilcationFormShowComponent implements OnInit {
     if (this.validateForm.valid) {
       let info = this.validateForm.value
       // @ts-ignore
-      info.employeeId=this.user_info_list[i].id;
+      info.employeeId=this.user_info_list[i].employee_id;
       console.log(info);
       this.http.post('/api/hr/update_application_form', info)
       console.log('submit', this.validateForm.value);
