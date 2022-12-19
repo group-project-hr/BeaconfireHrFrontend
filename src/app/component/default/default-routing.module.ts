@@ -34,8 +34,8 @@ const routes: Routes = [
       { path: 'employee/visa', component: VisaComponent },
       { path: 'employee/visa/user/fileslist', component: UserFilesListComponent },
       { path: 'hr/user_status_management', component: UserStatusManagementComponent },
-      { path: '**', redirectTo: "/login" },
       { path: "hr/application_workflow", component:ApplilcationFormShowComponent},
+      { path: '**', redirectTo: "/login" },
       {
         path: '**', redirectTo: "/login"
       }
