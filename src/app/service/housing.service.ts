@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ErrorHandlingService } from 'src/app/service/error-handling.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { HttpService } from './http.service';
 
 // Declare where this service is available for use
 @Injectable({ providedIn: 'root' })
 export class HousingService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
   getHouseDetail() {
     return this.http.get('/api/employee/housing');
@@ -21,7 +22,7 @@ export class HousingService {
       'content-type': 'application/json',
     };
 
-    return this.http.post<string>('/api/employee/housing/submit', body, {
+    return this.http.post('/api/employee/housing/submit', body, {
       headers,
     });
   }

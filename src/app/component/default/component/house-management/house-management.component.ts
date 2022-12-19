@@ -33,10 +33,8 @@ export class HouseManagementComponent implements OnInit {
 
   ngOnInit(): void {
     const response = this.houseManagementService.getAllHouses();
-    response.subscribe({
-      next: (data) => {
-        this.houses = data as House[];
-      },
+    response.then((data: any) => {
+      this.houses = data.data as House[];
     });
   }
 
@@ -72,8 +70,8 @@ export class HouseManagementComponent implements OnInit {
 
     const response = this.houseManagementService
       .getFacilityInfo(this.selectedHouseId)
-      .subscribe((data) => {
-        this.facilityDetail = data as Facility;
+      .then((data: any) => {
+        this.facilityDetail = data.data as Facility;
         console.log(this.facilityDetail);
       });
   }
@@ -85,8 +83,8 @@ export class HouseManagementComponent implements OnInit {
 
     const response = this.houseManagementService
       .getEmployeesInfo(this.selectedHouseId)
-      .subscribe((data) => {
-        this.employeeDetail = data as Employee[];
+      .then((data: any) => {
+        this.employeeDetail = data.data as Employee[];
         console.log(this.employeeDetail);
       });
   }
@@ -97,7 +95,7 @@ export class HouseManagementComponent implements OnInit {
     comment.reportId = reportId;
 
     let response = this.housingService.postReportComment(comment);
-    response.subscribe((data: unknown) => {
+    response.then((data: unknown) => {
       this.reports[index].comments.push(
         data as {
           id: number;

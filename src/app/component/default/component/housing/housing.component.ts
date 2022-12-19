@@ -17,12 +17,6 @@ export class HousingComponent implements OnInit {
 
   isHouse = true;
   isReport = false;
-  // //  test data, can delete
-  //   address: string = 'test address';
-  //   employees: { name: string; phone: string }[] = [
-  //     { name: 'Arkar', phone: '123' },
-  //     { name: 'Winson', phone: '321' },
-  //   ];
   address: Address = {} as Address;
   persons: Person[] = [];
   reports: Report[] = [];
@@ -49,15 +43,25 @@ export class HousingComponent implements OnInit {
     this.isHouse = true;
     this.isReport = false;
     let response = this.housingService.getHouseDetail();
-    response.subscribe({
-      next: (data) => {
-        const detail = data as HouseDetail;
-        this.address = detail.address;
-        this.persons = detail.persons;
-      },
-      error: (err: HttpErrorResponse) => {
-        this.errorService.handleError(err);
-      },
+    // response.then({
+    //   next: (data: any) => {
+    //     const detail = data as HouseDetail;
+    //     this.address = detail.address;
+    //     this.persons = detail.persons;
+    //   },
+    //   error: (err: HttpErrorResponse) => {
+    //     this.errorService.handleError(err);
+    //   },
+    // });
+    response.then((data: any) => {
+      console.log(data);
+
+      const detail = data.data as HouseDetail;
+      this.address = detail.address;
+
+      this.persons = detail.persons;
+      console.log(this.address);
+      console.log(this.persons);
     });
   }
 
@@ -65,10 +69,10 @@ export class HousingComponent implements OnInit {
     this.isHouse = false;
     this.isReport = true;
     let response = this.housingService.getAllReport();
-    response.subscribe((data) => {
+    response.then((data: any) => {
       // this works because there's only one key-value pair in the data
-      const reports = Object.values(data)[0];
-      this.reports = reports;
+      const reports = Object.values(data.data)[0];
+      this.reports = reports as Report[];
     });
   }
 
@@ -76,8 +80,8 @@ export class HousingComponent implements OnInit {
     let response = this.housingService.postHouseReport(
       this.houseReportForm.getRawValue() as Report
     );
-    response.subscribe((data: unknown) => {
-      this.reports.push(data as Report);
+    response.then((data: any) => {
+      this.reports.push(data.data as Report);
     });
 
     alert('Thank you for your submission');
@@ -90,9 +94,9 @@ export class HousingComponent implements OnInit {
     comment.reportId = reportId;
 
     let response = this.housingService.postReportComment(comment);
-    response.subscribe((data: unknown) => {
+    response.then((data: any) => {
       this.reports[index].comments.push(
-        data as {
+        data.data as {
           id: number;
           commentDate: string;
           createdBy: string;

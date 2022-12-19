@@ -40,6 +40,7 @@ import { HouseManagementComponent } from './component/house-management/house-man
     HomePageComponent,
     GenerateTokenComponent,
     HousingComponent,
+    HouseManagementComponent,
     OnboardingComponent,
     RegistrationComponent,
     LoginComponent,

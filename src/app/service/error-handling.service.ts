@@ -18,11 +18,13 @@ export class ErrorHandlingService {
 
   private handle500Error = (error: HttpErrorResponse) => {
     this.errorMessage = error.message;
-    this.router.navigate(['/500']);
+    alert('ERROR 500');
+    // this.router.navigate(['/500']);
   };
 
   private handle401Error = (error: HttpErrorResponse) => {
     this.errorMessage = error.message;
-    this.router.navigate(['/401']);
+    alert('ERROR 401');
+    // this.router.navigate(['/401']);
   };
 }
