@@ -13,12 +13,11 @@ import { UserStatusManagementComponent } from './component/user-status-managemen
 import { VerifyTokenComponent } from './component/verify-token/verify-token.component';
 import { VisaComponent } from './component/visa/visa.component';
 import { DefaultComponent } from './default.component';
-
-
+import { HouseManagementComponent } from './component/house-management/house-management.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: DefaultComponent,
     canActivate: [LoginGuard],
     children: [
@@ -31,15 +30,22 @@ const routes: Routes = [
       { path: 'employee/housing', component: HousingComponent },
       { path: 'employee/visa/file/preview', component: PdfViewerComponent },
       { path: 'employee/visa', component: VisaComponent },
-      { path: 'employee/visa/user/fileslist', component: UserFilesListComponent },
-      { path: 'hr/user_status_management', component: UserStatusManagementComponent },
-      { path: '**', redirectTo: "/login" }
-    ]
-  }
-
+      {
+        path: 'employee/visa/user/fileslist',
+        component: UserFilesListComponent,
+      },
+      {
+        path: 'hr/user_status_management',
+        component: UserStatusManagementComponent,
+      },
+      { path: 'employee/housing', component: HousingComponent },
+      { path: 'hr/house-management', component: HouseManagementComponent },
+      { path: '**', redirectTo: '/login' },
+    ],
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DefaultRoutingModule { }
+export class DefaultRoutingModule {}
