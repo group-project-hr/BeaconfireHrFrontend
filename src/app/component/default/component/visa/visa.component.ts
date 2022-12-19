@@ -22,12 +22,17 @@ export class VisaComponent implements OnInit {
     userlocalData=JSON.parse(userlocalData);
     // @ts-ignore
     // TODO finsihed but no data currently
-    // let userId=userlocalData.basicDataModel.userId;
-    this.userId='2';
-    let opt_repsonse = this.http.get('/api/visa/employee/' + this.userId)
+    let userId=userlocalData.basicDataModel.userId;
+    // this.userId='2';
+    if(userId===3){
+      userId=18;
+    }
+    let opt_repsonse = this.http.get('/api/visa/employee/' + userId)
       .then(((response) =>{
           // @ts-ignore
           let data = response.data;
+          console.log(userId);
+          console.log("data"+data.optStep);
         this.opt_step=data.optStep;
       })
         );
@@ -59,13 +64,28 @@ export class VisaComponent implements OnInit {
     e.preventDefault();
 
 
-    this.httpClient.post('/api/visa/visastatus', {
+    // this.http.post('/api/visa/visastatus', {
+    //   "opt_step": this.opt_step
+    // }).subscribe(
+    //   res => {
+    //   },
+    //   err => console.log(err)
+    // );
+    this.http.post('/api/visa/visastatus', {
       "opt_step": this.opt_step
-    }).subscribe(
-      res => {
-      },
-      err => console.log(err)
-    );
+    }).then(res => {
+    }).catch(error => {
+      alert(error.response.data)
+    })
+    var userlocalData=localStorage.getItem("beaconfire-session");
+    // @ts-ignore
+    userlocalData=JSON.parse(userlocalData);
+    // @ts-ignore
+    // TODO finsihed but no data currently
+    let userId=userlocalData.basicDataModel.userId;
+    if(userId===3){
+      userId=18;
+    }
     let opt_repsonse = this.http.get('/api/visa/employee/' + this.userId)
       .then(((response) =>{
           // @ts-ignore

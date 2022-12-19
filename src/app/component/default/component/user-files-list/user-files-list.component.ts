@@ -39,7 +39,7 @@ export class UserFilesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId='2';
-    let files_response = this.httpClient.get<any[]>('/api/visa/employee/fileslist/' + this.userId)
+    let files_response = this.httpClient.get<any[]>('/api/visa/employee/fileslist'+this.userId)
       .subscribe(Response => {
         this.files = Response.map(
           data => {
