@@ -24,8 +24,6 @@ export class HttpService {
     }, error => {
       return Promise.reject(error)
     })
-
-
   }
 
 

@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { LoginGuard } from 'src/app/service/login.guard';
-import { ApplicationFormComponent } from '../application-form/application-form.component';
+import { ApplicationFormComponent } from './component/application-form/application-form.component';
+import { HomePageComponent } from './component/home-page/home-page.component';
 import { HousingComponent } from './component/housing/housing.component';
+import { LoginComponent } from './component/login/login.component';
 import { OnboardingComponent } from './component/onboarding/onboarding.component';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { UserFilesListComponent } from './component/user-files-list/user-files-list.component';
@@ -21,15 +23,18 @@ const routes: Routes = [
     component: DefaultComponent,
     canActivate: [LoginGuard],
     children: [
+      { path: '', component: HomePageComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'test', component: OnboardingComponent },
       { path: 'verifytoken', component: VerifyTokenComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'application-form', component: ApplicationFormComponent },
       { path: 'employee/housing', component: HousingComponent },
-      { path: 'employee/visa/file/preview', component: PdfViewerComponent},
-      { path: 'employee/visa', component: VisaComponent},
-      { path: 'employee/visa/user/fileslist', component: UserFilesListComponent},
-      { path: 'hr/user_status_management', component: UserStatusManagementComponent},
+      { path: 'employee/visa/file/preview', component: PdfViewerComponent },
+      { path: 'employee/visa', component: VisaComponent },
+      { path: 'employee/visa/user/fileslist', component: UserFilesListComponent },
+      { path: 'hr/user_status_management', component: UserStatusManagementComponent },
+      { path: '**', redirectTo: "/login" },
       { path: "hr/application_workflow", component:ApplilcationFormShowComponent},
       {
         path: '**', redirectTo: "/login"

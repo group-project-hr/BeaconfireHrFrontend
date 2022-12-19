@@ -52,7 +52,11 @@ export class ApplicationFormComponent implements OnInit {
 
   submitForm(): void {
     let info = this.applicationForm.value
-    this.http.post('/api/employee/onboarding/application_form', info)
+    this.http.post('/api/employee/onboarding/application_form', info).then(res => {
+      window.location.href = '/employee'
+    }).catch(error => {
+      alert(error.response.data)
+    })
 
     console.log('submit', this.applicationForm.value);
   }
