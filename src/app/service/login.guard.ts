@@ -18,7 +18,7 @@ export class LoginGuard implements CanActivate {
     private storage: StorageService,
     private router: Router,
     private http: HttpService
-  ) {}
+  ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -131,5 +131,5 @@ const employeeRoutes = new Set<String>()
 const hrRoutes = new Set<String>()
   .add('/')
   .add('/hr/user_status_management')
-  .add('hr/application_workflow')
-  .add('hr/house-management');
+  .add('/hr/application_workflow')
+  .add('/hr/house-management');

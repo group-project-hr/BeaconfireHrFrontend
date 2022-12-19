@@ -1,1 +1,5 @@
 <p>home-page works!</p>
+
+<div *ngIf="userinfo.basicDataModel.roleEnum=='ADMIN'">
+    <app-generate-token></app-generate-token>
+</div>
