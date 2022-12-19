@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  templatepdf: [
+    { filename: 'I983-PDF Template', url: '/api/visa/i983.pdf', selected: true } ],
 };
 
 /*
